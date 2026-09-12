@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日市場觀察 · 歷史查詢</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f4ee;
+  --paper-2:#fffdf8;
+  --ink:#1b1a17;
+  --ink-2:#4a4740;
+  --ink-3:#807b70;
+  --rule:#d8d2c4;
+  --rule-soft:#e7e2d6;
+  --up:#a8322d;      /* 漲：紅（台灣慣例） */
+  --down:#2c6b52;    /* 跌：綠 */
+  --flat:#807b70;
+  --mark:#8a6d1f;
+  --band:#efe9dc;
+  /* 英數一律 Times New Roman；中文向後備援至 Noto TC / PingFang */
+  --serif:"Times New Roman",Times,"Noto Serif TC","Songti TC",serif;
+  --sans:"Times New Roman",Times,"Noto Sans TC","PingFang TC",serif;
+  --mono:"Times New Roman",Times,"Noto Sans TC","PingFang TC",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15171a; --paper-2:#1b1e22; --ink:#ece7dd; --ink-2:#b6b0a5;
+    --ink-3:#8b857b; --rule:#33383e; --rule-soft:#262b30;
+    --up:#e2685f; --down:#5fb894; --flat:#8b857b; --mark:#d8b45f;
+    --band:#20242a;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15171a; --paper-2:#1b1e22; --ink:#ece7dd; --ink-2:#b6b0a5;
+  --ink-3:#8b857b; --rule:#33383e; --rule-soft:#262b30;
+  --up:#e2685f; --down:#5fb894; --flat:#8b857b; --mark:#d8b45f;
+  --band:#20242a;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-weight:400; font-size:16.5px; line-height:1.7;
+  font-variant-numeric:lining-nums tabular-nums;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(0,0,0,.025), transparent 45%),
+    radial-gradient(circle at 88% 4%, rgba(0,0,0,.02), transparent 40%);
+}
+.sheet{max-width:940px;margin:0 auto;padding:0 22px 72px}
+
+/* ── 工具列 ───────────────────────── */
+.toolbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;
+  padding:10px 0 9px;margin-bottom:-4px;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:saturate(140%) blur(8px);
+  -webkit-backdrop-filter:saturate(140%) blur(8px);
+}
+.btn{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
+  color:var(--ink-2);background:var(--paper-2);
+  border:1px solid var(--rule);border-radius:2px;
+  padding:7px 13px;cursor:pointer;line-height:1.4;
+  transition:border-color .15s, color .15s, background .15s;
+}
+.btn:hover{border-color:var(--ink);color:var(--ink)}
+.btn:active{background:var(--band)}
+.btn:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.toast{
+  position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(12px);
+  background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:13.5px;
+  padding:10px 18px;border-radius:2px;opacity:0;pointer-events:none;
+  transition:opacity .22s, transform .22s;z-index:99;max-width:86vw;text-align:center;
+}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── 報頭 ─────────────────────────── */
+.masthead{padding:38px 0 16px;border-bottom:2.5px solid var(--ink)}
+.kicker{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+h1{
+  font-family:var(--serif);font-weight:700;font-size:clamp(30px,5.4vw,48px);
+  line-height:1.12;letter-spacing:.01em;margin:12px 0 6px;
+}
+h1 .thin{font-weight:400;color:var(--ink-2)}
+.dateline{
+  font-family:var(--mono);font-size:14px;color:var(--ink-2);
+  display:flex;gap:18px;flex-wrap:wrap;align-items:baseline;margin-bottom:14px;
+}
+.dateline b{color:var(--ink);font-weight:600}
+.standfirst{
+  font-family:var(--serif);font-size:17.5px;line-height:1.72;color:var(--ink-2);
+  max-width:64ch;margin:0 0 22px;
+}
+
+/* ── 速覽 ─────────────────────────── */
+/* 格線改由各卡片自己畫，不用「容器底色透出縫隙」的手法——
+   卡片數為奇數時，最後一個空格會露出容器灰底，看起來像壞掉的空卡。*/
+.glance{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
+  gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule);
+  margin:0 0 34px;
+}
+.g{background:var(--paper-2);padding:13px 14px 12px;
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.g .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase}
+.g .val{font-family:var(--mono);font-size:21px;font-weight:600;letter-spacing:-.01em;margin-top:4px;font-variant-numeric:tabular-nums}
+.g .chg{font-family:var(--mono);font-size:13px;margin-top:2px;font-variant-numeric:tabular-nums}
+
+/* ── 章節 ─────────────────────────── */
+section{margin:0 0 42px;scroll-margin-top:16px}
+.shead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--ink);padding-bottom:7px;margin-bottom:4px}
+.snum{
+  font-family:var(--serif);font-size:34px;font-weight:400;line-height:1;
+  color:var(--ink-3);min-width:38px;
+}
+.shead h2{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.02em;margin:0;flex:1}
+.shead .tag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase}
+
+/* ── 表格 ─────────────────────────── */
+.wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+caption{text-align:left;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);padding:14px 0 8px}
+th{
+  font-family:var(--mono);font-weight:700;font-size:11.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);text-align:right;
+  padding:10px 10px 8px;border-bottom:1px solid var(--rule);white-space:nowrap;
+}
+th:first-child{text-align:left;padding-left:0}
+td{
+  padding:11px 10px;border-bottom:1px solid var(--rule-soft);
+  font-family:var(--mono);font-size:15px;text-align:right;white-space:nowrap;
+}
+td:first-child{
+  text-align:left;padding-left:0;font-family:var(--sans);font-size:15.5px;
+  font-weight:500;white-space:normal;
+}
+tbody tr:hover td{background:var(--band)}
+.px{font-size:16.5px;font-weight:700}
+.up{color:var(--up)}
+.down{color:var(--down)}
+.flat{color:var(--flat)}
+.dim{color:var(--ink-3);font-size:13.5px}
+.note{
+  font-size:14.5px;line-height:1.62;color:var(--ink-2);
+  padding:9px 0 13px 16px;border-left:2px solid var(--rule);
+  margin:-2px 0 14px 0;background:transparent;
+}
+.note b{color:var(--ink);font-weight:500}
+tr.sub td{border-bottom:none;padding-top:0;padding-bottom:12px}
+tr.sub td .note{margin:0;padding-bottom:0}
+.spread-row td:first-child{font-weight:700}
+.spread-row td{background:var(--band)}
+
+/* ── 事件時間軸 ────────────────────── */
+.events{list-style:none;margin:14px 0 0;padding:0}
+.events li{
+  display:grid;grid-template-columns:152px 1fr;gap:16px;
+  padding:14px 0;border-bottom:1px solid var(--rule-soft);
+}
+.events .when{font-family:var(--mono);font-size:14px;color:var(--ink-2);line-height:1.5}
+.events .when b{display:block;color:var(--ink);font-size:15px;font-weight:600}
+.events .what{font-size:15.5px}
+.events .what .sub{display:block;color:var(--ink-2);font-size:14.5px;margin-top:3px}
+.events li.hot .when b{color:var(--up)}
+
+/* ── Fed 機率條 ────────────────────── */
+.probs{margin-top:16px}
+.bar{display:flex;height:32px;border:1px solid var(--rule);overflow:hidden;font-family:var(--mono)}
+.bar span{
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--paper-2);
+  /* 窄區塊絕不可折行或溢出，否則會像「維持不變 12.7%」那樣被截斷 */
+  white-space:nowrap;overflow:hidden;padding:0 4px;min-width:0;
+}
+.bar .b1{flex:70;background:var(--up)}
+.bar .b2{flex:30;background:var(--ink-3)}
+.bar .b3{flex:0.6;background:var(--rule);color:var(--ink-3)}
+.legend{
+  display:flex;gap:20px;flex-wrap:wrap;margin-top:9px;
+  font-family:var(--mono);font-size:12.5px;color:var(--ink-2);
+}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.legend span{display:inline-flex;align-items:center}
+
+/* ── 觀察重點 ───────────────────────── */
+/* 三欄都是中文敘述，必須可折行並固定比例分配；
+   否則門檻欄（繼承通用 nowrap）會獨佔寬度，把「意義」欄壓到只剩幾十 px。*/
+.watch{table-layout:fixed}
+.watch td{white-space:normal;vertical-align:top}
+.watch th:first-child,.watch td:first-child{width:26%}
+.watch th:nth-child(2),.watch td:nth-child(2){width:20%;text-align:left}
+.watch th:last-child,.watch td:last-child{width:54%;text-align:left}
+.watch td:nth-child(2){font-weight:600;color:var(--mark);font-family:var(--mono)}
+.watch td:last-child{font-family:var(--sans);font-size:14.5px;color:var(--ink-2)}
+.watch th:nth-child(2),.watch th:last-child{text-align:left}
+
+/* ── 來源／頁尾 ─────────────────────── */
+.sources{border-top:2.5px solid var(--ink);margin-top:52px;padding-top:18px}
+.sources h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px;font-weight:500}
+.sources ol{margin:0;padding-left:20px}
+.sources li{font-size:14px;line-height:1.6;margin-bottom:9px;color:var(--ink-2)}
+.sources a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);word-break:break-all}
+.sources a:hover{border-bottom-color:var(--ink)}
+.colophon{
+  margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);
+  font-size:13px;line-height:1.66;color:var(--ink-3);
+}
+.colophon .disc{font-family:var(--serif);font-size:13.5px;color:var(--ink-2)}
+.keyline{
+  display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;
+  color:var(--ink-3);letter-spacing:.06em;margin-top:10px;
+}
+.keyline i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}
+
+@media (max-width:600px){
+  body{font-size:15.5px}
+  /* 手機比例實測：26/28/46 時最高列 3 行；門檻欄再窄（22%）會讓長門檻折成 5 行 */
+  .watch th:first-child,.watch td:first-child{width:26%}
+  .watch th:nth-child(2),.watch td:nth-child(2){width:28%}
+  .watch th:last-child,.watch td:last-child{width:46%}
+  .watch td{font-size:13.5px;padding-left:6px;padding-right:6px}
+  .watch td:last-child{font-size:13.5px}
+  .sheet{padding:0 16px 56px}
+  .snum{font-size:27px;min-width:30px}
+  .shead h2{font-size:18px}
+  .events li{grid-template-columns:1fr;gap:5px}
+  td,th{padding-left:8px;padding-right:8px}
+}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .sheet{max-width:none;padding:0}
+  section{break-inside:avoid}
+  tbody tr:hover td{background:none}
+  .toolbar,.toast{display:none !important}
+  @page{size:A4;margin:14mm 12mm}
+}
+
+/* ── 通用條列（無法表格化的章節）──────────── */
+.plain{list-style:none;margin:14px 0 0;padding:0}
+.plain li{padding:11px 0;border-bottom:1px solid var(--rule-soft)}
+.plain li:last-child{border-bottom:none}
+.plain .it{display:block;font-size:15.5px;line-height:1.62}
+.plain .note{margin:7px 0 0;padding-bottom:0}
+
+/* 機率條圖例色塊 */
+.legend i.b1{background:var(--up)}
+.legend i.b2{background:var(--ink-3)}
+.legend i.b3{background:var(--down)}
+.bar .b3{background:var(--down)}
+
+/* 指數／殖利率表：首欄名稱不折行，數值才對得齊 */
+.tight td:first-child{white-space:nowrap}
+/* 無法欄位化的原句（如 VIX 各日寫法不一），整段照登 */
+td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
+  font-size:14px;line-height:1.55}
+
+/* 機率條：未載明的部分（不做推算，據實標示） */
+.bar .b0{background:repeating-linear-gradient(45deg,var(--rule) 0 6px,var(--rule-soft) 6px 12px);
+  color:var(--ink-3)}
+.legend i.b0{background:repeating-linear-gradient(45deg,var(--rule) 0 4px,var(--rule-soft) 4px 8px)}
+/* 殖利率表天期欄：收窄，把寬度讓給數值欄 */
+.tight th:first-child,.tight td:first-child{width:1%}
+
+/* 機率條標題（來源與時間戳）*/
+.probcap{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);padding:0 0 8px}
+
+.q{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0 4px}
+.q input{flex:1;min-width:200px;font-family:var(--mono);font-size:15px;
+  color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);
+  border-radius:2px;padding:10px 13px}
+.q input:focus{outline:none;border-color:var(--ink)}
+.q .hint{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.q .cnt{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+.mon{margin-top:26px}
+.mon h3{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--ink-3);
+  margin:0 0 2px;padding-bottom:6px;border-bottom:1px solid var(--ink);font-weight:700}
+.arch{list-style:none;padding:0;margin:0}
+.arch li{border-bottom:1px solid var(--rule-soft)}
+.arch a{display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:13px 4px;color:var(--ink);text-decoration:none;
+  font-family:var(--mono);font-size:15.5px}
+.arch a:hover{background:var(--band)}
+.arch .wd{color:var(--ink-3);font-size:13.5px}
+.arch .cov{color:var(--ink-3);font-size:13px;flex:1;text-align:right}
+.empty{padding:30px 2px;color:var(--ink-3);font-family:var(--mono);font-size:14px}
+</style>
+</head>
+<body>
+<div class="sheet">
+<nav class="toolbar" aria-label="工具"><a class="btn" href="../">← 回最新一期</a></nav>
+<header class="masthead">
+  <div class="kicker"><span>Archive</span><span>機構研究用 · 非投資建議</span></div>
+  <h1>歷史查詢</h1>
+  <div class="dateline"><span>共 <b>24</b> 期</span><span>最新 <b>2026-09-12</b></span><span>最早 <b>2026-08-11</b></span></div>
+</header>
+
+<div class="q">
+  <input id="q" type="search" placeholder="輸入日期篩選，例如 2026-09 或 09-11" autocomplete="off">
+  <span class="cnt" id="cnt"></span>
+</div>
+<div class="q"><span class="hint">可輸入年月（2026-09）、月日（09-11）或完整日期；按 Esc 清除</span></div>
+
+<div id="list">
+<div class="mon"><h3>2026 年 9 月　·　9 期</h3><ul class="arch"><li data-key="2026-09-12"><a href="2026-09-12.html"><span>2026-09-12</span><span class="cov">涵蓋 2026-09-11 紐約收盤</span><span class="wd">週六</span></a></li>
+<li data-key="2026-09-11"><a href="2026-09-11.html"><span>2026-09-11</span><span class="cov">涵蓋 2026-09-10 紐約收盤</span><span class="wd">週五</span></a></li>
+<li data-key="2026-09-10"><a href="2026-09-10.html"><span>2026-09-10</span><span class="cov">涵蓋 2026-09-09 紐約收盤</span><span class="wd">週四</span></a></li>
+<li data-key="2026-09-09"><a href="2026-09-09.html"><span>2026-09-09</span><span class="cov">涵蓋 2026-09-08 紐約收盤</span><span class="wd">週三</span></a></li>
+<li data-key="2026-09-05"><a href="2026-09-05.html"><span>2026-09-05</span><span class="cov">涵蓋 2026-09-04 紐約收盤</span><span class="wd">週六</span></a></li>
+<li data-key="2026-09-04"><a href="2026-09-04.html"><span>2026-09-04</span><span class="cov">涵蓋 2026-09-03 紐約收盤</span><span class="wd">週五</span></a></li>
+<li data-key="2026-09-03"><a href="2026-09-03.html"><span>2026-09-03</span><span class="cov">涵蓋 2026-09-02 紐約收盤</span><span class="wd">週四</span></a></li>
+<li data-key="2026-09-02"><a href="2026-09-02.html"><span>2026-09-02</span><span class="cov">涵蓋 2026-09-01 紐約收盤</span><span class="wd">週三</span></a></li>
+<li data-key="2026-09-01"><a href="2026-09-01.html"><span>2026-09-01</span><span class="cov">涵蓋 2026-08-31 紐約收盤</span><span class="wd">週二</span></a></li></ul></div>
+<div class="mon"><h3>2026 年 8 月　·　15 期</h3><ul class="arch"><li data-key="2026-08-29"><a href="2026-08-29.html"><span>2026-08-29</span><span class="cov">涵蓋 2026-08-28 紐約收盤</span><span class="wd">週六</span></a></li>
+<li data-key="2026-08-28"><a href="2026-08-28.html"><span>2026-08-28</span><span class="cov">涵蓋 2026-08-27 紐約收盤</span><span class="wd">週五</span></a></li>
+<li data-key="2026-08-27"><a href="2026-08-27.html"><span>2026-08-27</span><span class="cov">涵蓋 2026-08-26 紐約收盤</span><span class="wd">週四</span></a></li>
+<li data-key="2026-08-26"><a href="2026-08-26.html"><span>2026-08-26</span><span class="cov">涵蓋 2026-08-25 紐約收盤</span><span class="wd">週三</span></a></li>
+<li data-key="2026-08-25"><a href="2026-08-25.html"><span>2026-08-25</span><span class="cov">涵蓋 2026-08-24 紐約收盤</span><span class="wd">週二</span></a></li>
+<li data-key="2026-08-22"><a href="2026-08-22.html"><span>2026-08-22</span><span class="cov">涵蓋 2026-08-21 紐約收盤</span><span class="wd">週六</span></a></li>
+<li data-key="2026-08-21"><a href="2026-08-21.html"><span>2026-08-21</span><span class="cov">涵蓋 2026-08-20 紐約收盤</span><span class="wd">週五</span></a></li>
+<li data-key="2026-08-20"><a href="2026-08-20.html"><span>2026-08-20</span><span class="cov">涵蓋 2026-08-19 紐約收盤</span><span class="wd">週四</span></a></li>
+<li data-key="2026-08-19"><a href="2026-08-19.html"><span>2026-08-19</span><span class="cov">涵蓋 2026-08-18 紐約收盤</span><span class="wd">週三</span></a></li>
+<li data-key="2026-08-18"><a href="2026-08-18.html"><span>2026-08-18</span><span class="cov">涵蓋 2026-08-17 紐約收盤</span><span class="wd">週二</span></a></li>
+<li data-key="2026-08-15"><a href="2026-08-15.html"><span>2026-08-15</span><span class="cov">涵蓋 2026-08-14 紐約收盤</span><span class="wd">週六</span></a></li>
+<li data-key="2026-08-14"><a href="2026-08-14.html"><span>2026-08-14</span><span class="cov">涵蓋 2026-08-13 紐約收盤</span><span class="wd">週五</span></a></li>
+<li data-key="2026-08-13"><a href="2026-08-13.html"><span>2026-08-13</span><span class="cov">涵蓋 2026-08-12 紐約收盤</span><span class="wd">週四</span></a></li>
+<li data-key="2026-08-12"><a href="2026-08-12.html"><span>2026-08-12</span><span class="cov">涵蓋 2026-08-11 紐約收盤</span><span class="wd">週三</span></a></li>
+<li data-key="2026-08-11"><a href="2026-08-11.html"><span>2026-08-11</span><span class="cov">涵蓋 2026-08-10 紐約收盤</span><span class="wd">週二</span></a></li></ul></div>
+</div>
+<div class="empty" id="empty" hidden>找不到符合的期別</div>
+
+<footer class="sources">
+  <div class="colophon">
+    <p class="disc">本頁彙整歷次每日市場觀察報告，內容為公開市場數據之彙整，<b>不構成投資建議</b>。</p>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var q = document.getElementById('q'), cnt = document.getElementById('cnt'),
+      empty = document.getElementById('empty'),
+      items = [].slice.call(document.querySelectorAll('.arch li')),
+      months = [].slice.call(document.querySelectorAll('.mon'));
+  function apply() {
+    var v = q.value.trim().toLowerCase(), n = 0;
+    items.forEach(function(li) {
+      var hit = !v || li.dataset.key.indexOf(v) !== -1;
+      li.hidden = !hit;
+      if (hit) n++;
+    });
+    months.forEach(function(m) {
+      m.hidden = !m.querySelector('.arch li:not([hidden])');
+    });
+    cnt.textContent = n + ' / ' + items.length + ' 期';
+    empty.hidden = n !== 0;
+  }
+  q.addEventListener('input', apply);
+  q.addEventListener('keydown', function(e) { if (e.key === 'Escape') { q.value = ''; apply(); } });
+  apply();
+})();
+</script>
+</body>
+</html>
