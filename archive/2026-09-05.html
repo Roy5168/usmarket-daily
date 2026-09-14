@@ -235,14 +235,7 @@ tr.sub td .note{margin:0;padding-bottom:0}
   .events li{grid-template-columns:1fr;gap:5px}
   td,th{padding-left:8px;padding-right:8px}
 }
-@media print{
-  body{background:#fff;font-size:11pt}
-  .sheet{max-width:none;padding:0}
-  section{break-inside:avoid}
-  tbody tr:hover td{background:none}
-  .toolbar,.toast{display:none !important}
-  @page{size:A4;margin:14mm 12mm}
-}
+/* 列印：改由 usmarket_print.css 的 A4 精簡版負責，網頁版不再直接套印 */
 
 /* ── 通用條列（無法表格化的章節）──────────── */
 .plain{list-style:none;margin:14px 0 0;padding:0}
@@ -275,6 +268,112 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
   text-transform:uppercase;color:var(--ink-3);padding:0 0 8px}
 
 </style>
+<style>
+/* ══════════════════════════════════════════════════════
+   A4 列印版（給長官紙本參考）— 目標：任何一期都不超過 2 頁
+   螢幕上隱藏；列印時隱藏網頁版、只印這份重新編排的內容。
+   顏色一律寫死（不走 CSS 變數），深色模式下列印也是白底黑字。
+
+   版面規則刻意「不放在 @media print 裡」：頁面載入時 usmarket_toolbar.js 會把
+   列印版複製到畫面外（.pmeasure，寬度＝A4 可印寬 188mm）量高度，據以自動縮放
+   字級（只超出一點就壓回 1 頁、超過 2 頁就壓到 2 頁）。若版面規則只在列印時生效，
+   螢幕上量到的高度就不準。@media print 只負責顯示／隱藏與頁面設定。
+   ══════════════════════════════════════════════════════ */
+.print-sheet{display:none}
+.print-sheet.pmeasure{display:block;position:absolute;left:-10000px;top:0;width:188mm;
+  visibility:hidden;pointer-events:none}
+
+.print-sheet{
+  color:#111;
+  font-family:"Times New Roman",Times,"PingFang TC","Microsoft JhengHei","微軟正黑體","Heiti TC",sans-serif;
+  line-height:1.36;
+  font-variant-numeric:lining-nums tabular-nums;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+/* --pk：字級係數。初值依內容字數分級（見 usmarket_render.py 的 build_print），
+   頁面載入後由 usmarket_toolbar.js 實測高度再微調（壓回 1 頁或壓到 2 頁內）。
+   --fx：字寬校正係數，預設 1；壓力測試以此模擬 Windows 字型較寬的情況。
+   密度分級：依內容字數自動選擇
+   一般 ≤2400 字、dense >2400 字（早期八節格式）、xdense >4000 字（安全網）。
+   以係數縮放所有字級，版面結構不變。*/
+.print-sheet .pwrap{--pk:1;font-size:calc(9.2pt * var(--pk) * var(--fx, 1))}
+.print-sheet .pwrap.dense{--pk:.9}
+.print-sheet .pwrap.xdense{--pk:.8}
+.print-sheet .up{color:#a8322d}
+.print-sheet .down{color:#2c6b52}
+.print-sheet .flat{color:#555}
+
+/* 報頭 */
+.print-sheet .ph{display:flex;justify-content:space-between;align-items:flex-end;gap:10pt;
+  border-bottom:1.4pt solid #111;padding-bottom:2.5pt;margin-bottom:3pt}
+.print-sheet .ph .t{font-size:calc(16pt * var(--pk) * var(--fx, 1));font-weight:700;letter-spacing:.04em;line-height:1.1}
+.print-sheet .ph .t span{font-size:calc(7.4pt * var(--pk) * var(--fx, 1));font-weight:400;color:#666;letter-spacing:.14em;
+  margin-left:7pt;text-transform:uppercase}
+.print-sheet .ph .d{font-size:calc(7.8pt * var(--pk) * var(--fx, 1));color:#333;text-align:right;line-height:1.35}
+
+/* 章節標題 */
+.print-sheet .psec{margin:0}
+.print-sheet .ps{font-size:calc(10.5pt * var(--pk) * var(--fx, 1));font-weight:700;margin:5pt 0 1.5pt;padding-bottom:1pt;
+  border-bottom:.6pt solid #444;break-after:avoid;page-break-after:avoid}
+.print-sheet .ps .n{color:#777;font-weight:700}
+
+/* 表格
+   注意：網頁版樣式對 th／td／td:first-child／caption 直接設了 15px 字級、字距與大寫轉換，
+   會滲入列印版（曾導致表格字比說明大一倍、第一頁塞爆）。必須在儲存格層級逐一明確覆寫。*/
+.print-sheet table.pt{width:100%;border-collapse:collapse;font-size:calc(9pt * var(--pk) * var(--fx, 1));margin:0 0 1.5pt}
+.print-sheet .pt th,.print-sheet .pt td,.print-sheet .pt td:first-child,.print-sheet .pt caption{
+  font-family:inherit;font-size:calc(9pt * var(--pk) * var(--fx, 1));font-weight:400;letter-spacing:0;text-transform:none;background:none}
+.print-sheet .pt caption{text-align:left;font-size:calc(8pt * var(--pk) * var(--fx, 1));color:#555;padding:.5pt 0 1pt}
+.print-sheet .pt th{font-weight:700;font-size:calc(8pt * var(--pk) * var(--fx, 1));color:#555;text-align:right;white-space:nowrap;
+  border-bottom:.5pt solid #999;padding:1pt 3pt}
+.print-sheet .pt th:first-child{text-align:left;padding-left:0}
+.print-sheet .pt td{padding:1.1pt 3pt;border-bottom:.35pt solid #d9d9d9;text-align:right;
+  white-space:nowrap;vertical-align:top}
+.print-sheet .pt td:first-child{text-align:left;padding-left:0}
+.print-sheet .pt td.b{font-weight:700}
+.print-sheet .pt td.tx{text-align:left;white-space:normal}
+.print-sheet .pt tr{break-inside:avoid;page-break-inside:avoid}
+
+/* 兩欄表（商品、經濟數據、事件） */
+.print-sheet .pt.kv td.k{width:1%;white-space:nowrap;padding-right:8pt;font-weight:600;color:#222}
+
+/* 觀察重點三欄 */
+.print-sheet .pt.pw{table-layout:fixed}
+.print-sheet .pt.pw th,.print-sheet .pt.pw td{text-align:left;white-space:normal}
+.print-sheet .pt.pw th:nth-child(1),.print-sheet .pt.pw td:nth-child(1){width:22%}
+.print-sheet .pt.pw th:nth-child(2),.print-sheet .pt.pw td:nth-child(2){width:24%}
+.print-sheet .pt.pw td.mk{color:#7a5d12;font-weight:600}
+
+/* 細項說明：縮小接在同格 */
+.print-sheet .pn{font-size:calc(8pt * var(--pk) * var(--fx, 1));color:#555;line-height:1.3;margin-top:.4pt}
+
+/* 條列 */
+.print-sheet ul.pl{list-style:none;margin:0;padding:0}
+.print-sheet .pl li{position:relative;padding:1pt 0 1pt 8pt;border-bottom:.35pt solid #e6e6e6;
+  break-inside:avoid;page-break-inside:avoid}
+.print-sheet .pl li:before{content:"•";position:absolute;left:0;color:#777}
+
+/* Fed 機率 */
+.print-sheet .pfed{margin:.5pt 0 1.5pt;font-size:calc(9pt * var(--pk) * var(--fx, 1))}
+.print-sheet .pfed .m{color:#666;font-size:calc(8pt * var(--pk) * var(--fx, 1))}
+.print-sheet .pbar{display:flex;height:4.5pt;border:.4pt solid #999;margin:1pt 0 1.5pt;overflow:hidden}
+.print-sheet .pbar .b1{background:#a8322d}
+.print-sheet .pbar .b2{background:#8a857b}
+.print-sheet .pbar .b3{background:#2c6b52}
+.print-sheet .pbar .b0{background:#e5e1d8}
+
+/* 頁尾 */
+.print-sheet .pfoot{display:flex;justify-content:space-between;gap:10pt;margin-top:4pt;padding-top:2pt;
+  border-top:.5pt solid #999;font-size:calc(7.4pt * var(--pk) * var(--fx, 1));color:#555}
+
+@media print{
+  @page{size:A4;margin:10mm 11mm 10mm}
+  html,body{background:#fff !important;margin:0}
+  .sheet,.toolbar,.toast,.print-sheet.pmeasure{display:none !important}
+  .print-sheet{display:block}
+}
+
+</style>
 </head>
 <body data-report-date="2026-09-05">
 <div class="sheet">
@@ -282,7 +381,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 <nav class="toolbar" aria-label="檔案工具">
   <a class="btn" id="lnk-archive" href="archive/">☰ 歷史查詢</a>
   <button class="btn" id="btn-save" type="button">⤓ 另存新檔（HTML）</button>
-  <button class="btn" id="btn-pdf" type="button">⎙ 列印／存成 PDF</button>
+  <button class="btn" id="btn-pdf" type="button">⎙ 列印（A4 精簡版）</button>
   <button class="btn" id="btn-theme" type="button">◐ 深／淺色</button>
 </nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -311,7 +410,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">一</div><h2>美股行情</h2><div class="tag">2026-09-04 CLOSE</div></div>
-<div class="wrap"><table class="tight"><caption>四大指數 · 收盤與歷史數據變動</caption><thead><tr><th>指數</th><th>收盤</th><th>日變動</th><th>一週前</th><th>一個月前</th><th>年初</th></tr></thead><tbody><tr><td>S&amp;P 500</td><td><span class="px">7,718.60</span></td><td><span class="down">－29.11</span><br><span class="dim down">－0.38%</span></td><td>7,711.76<br><span class="dim up">＋0.09%</span></td><td>7,709.96<br><span class="dim up">＋0.11%</span></td><td>6,858.47<br><span class="dim up">＋12.54%</span></td></tr><tr><td>Nasdaq 綜合</td><td><span class="px">26,506.99</span></td><td><span class="down">－77.07</span><br><span class="dim down">－0.29%</span></td><td>26,402.42<br><span class="dim up">＋0.40%</span></td><td>26,348.35<br><span class="dim up">＋0.60%</span></td><td>23,235.63<br><span class="dim up">＋14.08%</span></td></tr><tr><td>道瓊工業</td><td><span class="px">53,414.25</span></td><td><span class="down">－271.86</span><br><span class="dim down">－0.51%</span></td><td>53,559.99<br><span class="dim down">－0.27%</span></td><td>53,885.10<br><span class="dim down">－0.87%</span></td><td>48,382.39<br><span class="dim up">＋10.40%</span></td></tr><tr><td>Russell 2000</td><td><span class="px">2,975.65</span></td><td><span class="up">＋7.38</span><br><span class="dim up">＋0.25%</span></td><td>2,972.37<br><span class="dim up">＋0.11%</span></td><td>3,001.55<br><span class="dim down">－0.86%</span></td><td>2,508.22<br><span class="dim up">＋18.64%</span></td></tr><tr><td>VIX</td><td><span class="px">14.53</span></td><td colspan="4" class="freetext up">+0.21（+1.47%），前一交易日14.32</td></tr></tbody></table></div>
+<div class="wrap"><table class="tight"><caption>四大指數 · 收盤與歷史數據變動</caption><thead><tr><th>指數</th><th>收盤</th><th>日變動</th><th>一週前</th><th>一個月前</th><th>年初</th></tr></thead><tbody><tr><td>S&amp;P 500</td><td><span class="px">7,718.60</span></td><td><span class="down">－29.11</span><br><span class="dim down">－0.38%</span></td><td>7,711.76<br><span class="dim up">＋0.09%</span></td><td>7,709.96<br><span class="dim up">＋0.11%</span></td><td>6,858.47<br><span class="dim up">＋12.54%</span></td></tr><tr><td>Nasdaq 綜合</td><td><span class="px">26,506.99</span></td><td><span class="down">－77.07</span><br><span class="dim down">－0.29%</span></td><td>26,402.42<br><span class="dim up">＋0.40%</span></td><td>26,348.35<br><span class="dim up">＋0.60%</span></td><td>23,235.63<br><span class="dim up">＋14.08%</span></td></tr><tr><td>道瓊工業</td><td><span class="px">53,414.25</span></td><td><span class="down">－271.86</span><br><span class="dim down">－0.51%</span></td><td>53,559.99<br><span class="dim down">－0.27%</span></td><td>53,885.10<br><span class="dim down">－0.87%</span></td><td>48,382.39<br><span class="dim up">＋10.40%</span></td></tr><tr><td>Russell 2000</td><td><span class="px">2,975.65</span></td><td><span class="up">＋7.38</span><br><span class="dim up">＋0.25%</span></td><td>2,972.37<br><span class="dim up">＋0.11%</span></td><td>3,001.55<br><span class="dim down">－0.86%</span></td><td>2,508.22<br><span class="dim up">＋18.64%</span></td></tr><tr><td>VIX</td><td><span class="px">14.53</span></td><td><span class="up">＋0.21</span><br><span class="dim up">＋1.47%</span></td><td>14.43<br><span class="dim up">＋0.69%</span></td><td>15.15<br><span class="dim down">－4.09%</span></td><td>14.51<br><span class="dim up">＋0.14%</span></td></tr></tbody></table></div>
 </section>
 
 <section>
@@ -361,16 +460,80 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
       <span><i style="background:var(--down)"></i>綠＝下跌／殖利率下行</span>
       <span>bp＝基點（0.01%）</span>
       <span>時間除另註明外均為美東時間</span>
-      <span>產生於 2026-09-14 17:22</span>
+      <span>產生於 2026-09-14 23:35</span>
     </div>
   </div>
 </footer>
 
 </div>
 
+<div class="print-sheet" aria-hidden="true">
+<div class="pwrap">
+<header class="ph"><div class="t">每日市場觀察<span>Daily Market Observation</span></div><div class="d">發布 <b>2026-09-05</b>（台北）｜涵蓋 <b>2026-09-04</b> 紐約收盤<br>機構研究用・非投資建議</div></header>
+<section class="psec"><h3 class="ps"><span class="n">一、</span>美股行情</h3><table class="pt"><thead><tr><th>指數</th><th>收盤</th><th>日變動</th><th>一週前</th><th>一個月前</th><th>年初</th></tr></thead><tbody><tr><td>S&amp;P 500</td><td class="b">7,718.60</td><td><span class="down">－29.11</span>　<span class="down">－0.38%</span></td><td>7,711.76 <span class="up">（＋0.09%）</span></td><td>7,709.96 <span class="up">（＋0.11%）</span></td><td>6,858.47 <span class="up">（＋12.54%）</span></td></tr><tr><td>Nasdaq 綜合</td><td class="b">26,506.99</td><td><span class="down">－77.07</span>　<span class="down">－0.29%</span></td><td>26,402.42 <span class="up">（＋0.40%）</span></td><td>26,348.35 <span class="up">（＋0.60%）</span></td><td>23,235.63 <span class="up">（＋14.08%）</span></td></tr><tr><td>道瓊工業</td><td class="b">53,414.25</td><td><span class="down">－271.86</span>　<span class="down">－0.51%</span></td><td>53,559.99 <span class="down">（－0.27%）</span></td><td>53,885.10 <span class="down">（－0.87%）</span></td><td>48,382.39 <span class="up">（＋10.40%）</span></td></tr><tr><td>Russell 2000</td><td class="b">2,975.65</td><td><span class="up">＋7.38</span>　<span class="up">＋0.25%</span></td><td>2,972.37 <span class="up">（＋0.11%）</span></td><td>3,001.55 <span class="down">（－0.86%）</span></td><td>2,508.22 <span class="up">（＋18.64%）</span></td></tr><tr><td>VIX</td><td class="b">14.53</td><td><span class="up">＋0.21</span>　<span class="up">＋1.47%</span></td><td>14.43 <span class="up">（＋0.69%）</span></td><td>15.15 <span class="down">（－4.09%）</span></td><td>14.51 <span class="up">（＋0.14%）</span></td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">二、</span>債市與商品</h3><table class="pt"><caption>美國公債殖利率（U.S. Treasury 官網 09/04/2026 收盤）</caption><thead><tr><th>天期</th><th>殖利率</th><th>前一交易日</th><th>日變動</th><th>一週前</th><th>一個月前</th></tr></thead><tbody><tr><td>2年期</td><td class="b">4.37%</td><td>4.34%</td><td><span class="up">＋3bp</span></td><td>4.34% <span class="up">（＋3bp）</span></td><td>4.25% <span class="up">（＋12bp）</span></td></tr><tr><td>5年期</td><td class="b">4.54%</td><td>4.52%</td><td><span class="up">＋2bp</span></td><td>4.48% <span class="up">（＋6bp）</span></td><td>4.40% <span class="up">（＋14bp）</span></td></tr><tr><td>10年期</td><td class="b">4.78%</td><td>4.77%</td><td><span class="up">＋1bp</span></td><td>4.73% <span class="up">（＋5bp）</span></td><td>4.69% <span class="up">（＋9bp）</span></td></tr><tr><td>30年期</td><td class="b">5.24%</td><td>5.25%</td><td><span class="down">－1bp</span></td><td>5.22% <span class="up">（＋2bp）</span></td><td>5.22% <span class="up">（＋2bp）</span></td></tr></tbody></table><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">41bp（前一交易日43bp，-2bp）<div class="pn">較一週前39bp、一個月前44bp區間震盪，昨日小幅走平。</div></td></tr><tr><td class="k">30Y–10Y利差</td><td class="tx">46bp（前一交易日48bp，-2bp）<div class="pn">較一個月前53bp持續收斂，長天期利差走平。</div></td></tr><tr><td class="k">WTI原油（期貨結算）</td><td class="tx">91.20美元/桶，-0.11%</td></tr><tr><td class="k">Brent原油（期貨結算）</td><td class="tx">95.23美元/桶，-0.31%<div class="pn">兩者本週累計漲約8–9%，中東地緣政治（美伊緊張、荷姆茲海峽通行不確定性）為主要支撐，昨日小幅回落。</div></td></tr><tr><td class="k">黃金（期貨結算）</td><td class="tx">4,476.60美元/盎司，-1.39%<div class="pn">自近期高點回落，市場解讀與升息機率回升、殖利率走高相關，實質利率上升削弱無息資產吸引力。</div></td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.15，+0.24%（截至美東時間2026-09-04收盤）<div class="pn">反轉前一交易日跌勢，與非農數據優於預期、升息機率回升同步。</div></td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">非農就業人數</td><td class="tx">+162,000人／市場預期+56,000人／前值（7月，經上修）<div class="pn">遠優於預期近三倍，且前兩月合計上修約5.5萬人，扭轉7月疲弱格局，強化9月升息機率。</div></td></tr><tr><td class="k">失業率</td><td class="tx">4.1%／預期4.1%／前值4.1%<div class="pn">與預期一致，勞動市場緊俏程度未明顯惡化。</div></td></tr><tr><td class="k">私部門就業增加</td><td class="tx">127,000人／工廠就業增加：16,000人<div class="pn">顯示就業增長分布於多數部門，非單一產業驅動。</div></td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td class="k">09/07（一）</td><td class="tx">美國勞動節假期，美股休市</td></tr><tr><td class="k">09/09（三）</td><td class="tx">美國財政部標售10年期公債</td></tr><tr><td class="k">09/11（五）08:30 ET</td><td class="tx">CPI（2026年8月，年增率／核心年增率）</td></tr><tr><td class="k">09/15–16（二至三）</td><td class="tx">FOMC會議；09/16 14:00 ET公布利率決議，14:30 ET Warsh主席記者會</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>9月16日FOMC會議：升息1碼機率約52–53%，維持不變機率約47–48%（截至美東時間2026-09-04收盤，CME FedWatch）<div class="pn">較8月25日約41%的升息機率明顯上升，主因8月非農就業大幅優於預期，市場重新評估緊縮路徑；不同數據源估計值存在差異，宜以CME官方頁面即時數字為準。</div></li></ul></section>
+<section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10Y殖利率</td><td class="mk">站上4.80%</td><td>市場進一步定價9月升息機率上升</td></tr><tr><td>CPI年增率（09/11公布）</td><td class="mk">高於預期</td><td>強化升息預期並可能推升殖利率與美元</td></tr><tr><td>DXY</td><td class="mk">站穩100</td><td>反映升息預期主導匯市定價</td></tr><tr><td>WTI原油</td><td class="mk">站上95美元</td><td>反映中東地緣風險溢價持續計入油價</td></tr><tr><td>VIX</td><td class="mk">突破17（近25個交易日處於14–17區間）</td><td>市場波動性顯著抬升訊號</td></tr></tbody></table></section>
+<footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:35</span></footer>
+</div>
+</div>
+
 <script>
 (function(){
   var DATE = document.body.dataset.reportDate || '';
+
+  /* ── A4 列印版自動縮放 ─────────────────────────────────
+     把列印版複製到畫面外、以 A4 可印寬 188mm 實際排版量高度：
+       • 只超出一頁一點點（≤18%）→ 字級最多縮小 12%，壓回 1 頁，避免第二頁只剩一兩行
+       • 超過 2 頁 → 縮到 2 頁內
+     量測在讀者自己的電腦上進行，因此 Windows 字型較寬時也會自動補償。*/
+  function fitPrint() {
+    var sheet = document.querySelector('.print-sheet:not(.pmeasure)');
+    var wrap = sheet && sheet.querySelector('.pwrap');
+    if (!wrap) return;
+    var PAGE_H = (297 - 20) * 96 / 25.4;     // A4 高度扣上下邊界各 10mm（CSS px）
+    var ONE = 0.965, TWO = 1.88;             // 預留表頭重複、避免段落被切開造成的空白
+    var base = /\bxdense\b/.test(wrap.className) ? 0.8 : (/\bdense\b/.test(wrap.className) ? 0.9 : 1);
+
+    var host = document.createElement('div');
+    host.className = 'print-sheet pmeasure';
+    host.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(host);
+
+    function pages(pk) {
+      host.innerHTML = '';
+      var c = wrap.cloneNode(true);
+      c.style.setProperty('--pk', String(pk));
+      host.appendChild(c);
+      return c.getBoundingClientRect().height / PAGE_H;
+    }
+    function largest(lo, hi, limit) {        // [lo,hi] 內仍不超過 limit 頁的最大係數
+      if (pages(lo) > limit) return null;
+      for (var i = 0; i < 8; i++) {
+        var mid = (lo + hi) / 2;
+        if (pages(mid) <= limit) lo = mid; else hi = mid;
+      }
+      return lo;
+    }
+
+    var pk = base, r = pages(base);
+    if (r > ONE && r <= 1.18) {
+      var one = largest(base * 0.88, base, ONE);
+      if (one) pk = one;
+    } else if (r > TWO) {
+      var two = largest(0.72, base, TWO);
+      pk = two || 0.72;
+    }
+    host.parentNode.removeChild(host);
+    if (pk !== base) wrap.style.setProperty('--pk', pk.toFixed(3));
+    else wrap.style.removeProperty('--pk');
+    wrap.setAttribute('data-fit', r.toFixed(3) + '→' + pk.toFixed(3));   // 量測紀錄（原始頁數比→採用係數）
+  }
+  try { fitPrint(); } catch (e) {}
+  window.addEventListener('beforeprint', function () { try { fitPrint(); } catch (e) {} });
+
 
   /* 同一份 HTML 會同時放在站台根目錄與 archive/ 底下，存檔頁連結須依所在位置調整 */
   var arch = document.getElementById('lnk-archive');
