@@ -367,7 +367,16 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
   border-top:.5pt solid #999;font-size:calc(7.4pt * var(--pk) * var(--fx, 1));color:#555}
 
 @media print{
-  @page{size:A4;margin:10mm 11mm 10mm}
+  /* 右下角頁碼：@page 頁邊欄位（Chrome／Edge 131 起支援；Safari 不支援，屆時僅無頁碼、版面不受影響）。
+     頁碼位於下邊界 10mm 之內，不佔內容高度，故 fitPrint() 的頁高計算不需調整。*/
+  @page{
+    size:A4;margin:10mm 11mm 10mm;
+    @bottom-right{
+      content:counter(page) " / " counter(pages);
+      font-family:"Times New Roman",Times,serif;font-size:8pt;color:#666;
+      vertical-align:middle;
+    }
+  }
   html,body{background:#fff !important;margin:0}
   .sheet,.toolbar,.toast,.print-sheet.pmeasure{display:none !important}
   .print-sheet{display:block}
