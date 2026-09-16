@@ -593,7 +593,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
     return '<!DOCTYPE html>\n' + clone.outerHTML;
   }
 
-  document.getElementById('btn-save').addEventListener('click', function(){
+  var $ = function (id) { return document.getElementById(id); };
+  // 工具列按鈕未必都存在（部分頁面只保留其中幾顆）；
+  // 不先檢查就綁事件會在此中斷，連後面的列印按鈕都失效
+  if ($('btn-save')) $('btn-save').addEventListener('click', function(){
     var name = '每日市場觀察_' + (DATE || 'report') + '.html';
     try {
       var blob = new Blob(['﻿' + buildSnapshot()], {type:'text/html;charset=utf-8'});
@@ -608,18 +611,22 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
     }
   });
 
-  document.getElementById('btn-pdf').addEventListener('click', function(){
+  if ($('btn-pdf')) $('btn-pdf').addEventListener('click', function(){
     window.print();
   });
 
   /* 深／淺色：僅存在本機瀏覽器，讀取失敗不影響頁面 */
   var KEY = 'usmkt-theme';
+  // 僅在「有切換鈕」的頁面才套用記住的主題：固定配色的頁面不該被覆寫，
+  // 因為 localStorage 是同網域共用的，別的頁面切成深色不應連帶影響
   try {
     var saved = localStorage.getItem(KEY);
-    if (saved === 'dark' || saved === 'light') document.documentElement.setAttribute('data-theme', saved);
+    if ($('btn-theme') && (saved === 'dark' || saved === 'light')) {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
   } catch (e) {}
 
-  document.getElementById('btn-theme').addEventListener('click', function(){
+  if ($('btn-theme')) $('btn-theme').addEventListener('click', function(){
     var cur = document.documentElement.getAttribute('data-theme');
     if (!cur) {
       cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
