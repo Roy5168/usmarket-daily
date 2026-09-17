@@ -397,7 +397,11 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 /* 「另存新檔」會移除工具列：工具列不在時改顯示這份備份，存下來的檔案仍看得到 logo 與附註 */
 .brandbox.bsave{display:none;align-items:flex-end;margin:10px 0 0 auto;width:max-content}
 .brandbox.bsave:first-child{display:flex}
-/* 紙本：報頭右側 logo＋附註。放在列印版內（螢幕上本就隱藏），自動縮放量高度時才會算進去 */
+/* 紙本：報頭右側 logo＋附註。放在列印版內（螢幕上本就隱藏）。
+   自動縮放量高度時「不」算 logo（.pmeasure 為量測用複本）：logo 使報頭高約 0.01 頁，
+   曾讓 8/27 個人版壓回 1 頁、公司版卻差一點壓不回而印 2 頁。排除後兩版縮放決策必定相同，
+   實印多出的高度由 fitPrint 預留的 3.5% 餘裕吸收。 */
+.print-sheet.pmeasure .pbrand{display:none !important}
 .print-sheet .ph .d{margin-left:auto}
 .print-sheet .pbrand{display:flex;margin-left:10pt;margin-right:8pt;flex-direction:column;
   align-items:flex-end;align-self:flex-end;gap:1pt}
