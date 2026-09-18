@@ -273,6 +273,26 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .events li,.plain li{padding-left:12px;padding-right:12px}
 .probs{padding:12px}
 
+/* ── 殖利率曲線圖（資料同上方官方殖利率表）──────────── */
+.yccap{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);padding:18px 0 6px}
+.yc{background:var(--table-bg);padding:10px 12px 12px}
+.yc svg{width:100%;height:auto;display:block}
+.yc-grid{stroke:var(--rule-soft);stroke-width:1}
+.yc-ax{fill:var(--ink-3);font-family:var(--mono);font-size:12px}
+.yc-val{fill:var(--ink-2);font-family:var(--mono);font-size:12px}
+.yc-now{fill:none;stroke:var(--up);stroke-width:2.2}
+.yc-dot{fill:var(--up)}
+.yc-prev{fill:none;stroke:var(--ink-3);stroke-width:1.4;stroke-dasharray:6 4}
+.yc-mo{fill:none;stroke:var(--mark);stroke-width:1.4;stroke-dasharray:2 4;opacity:.75}
+.yc-legend{display:flex;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:12px;
+  color:var(--ink-3);padding:8px 0 2px}
+.yc-legend i{display:inline-block;width:14px;height:0;border-top:2px solid currentColor;
+  margin-right:6px;vertical-align:4px}
+.yc-legend i.yc-l-now{border-top-color:var(--up)}
+.yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
+.yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -388,6 +408,18 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
   .print-sheet{display:block}
 }
 
+/* 殖利率曲線（紙本）：與網頁同一張 SVG，壓扁高度、縮小字並取消白底邊框 */
+.print-sheet .pyc{background:none;padding:0;margin:1pt 0 2pt}
+.print-sheet .pyc svg{width:46%;height:auto;display:block}
+.print-sheet .pyc .yc-ax,.print-sheet .pyc .yc-val{font-size:22px}
+.print-sheet .pyc .yc-now{stroke:#a8322d;stroke-width:3}
+.print-sheet .pyc .yc-dot{fill:#a8322d}
+.print-sheet .pyc .yc-prev{stroke:#777;stroke-width:2}
+.print-sheet .pyc .yc-mo{stroke:#8a6d1f;stroke-width:2}
+.print-sheet .pyc .yc-grid{stroke:#e2e2e2}
+.print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
+  gap:10pt;padding:1pt 0 0}
+
 </style>
 </head>
 <body data-report-date="2026-09-18">
@@ -431,6 +463,38 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 <section>
   <div class="shead"><div class="snum">二</div><h2>債市與商品</h2><div class="tag">UST · COMMODITIES · FX</div></div>
 <div class="wrap"><table class="tight"><caption>美國公債殖利率 · 來源：U.S. Treasury 官網 09/17/2026 收盤</caption><thead><tr><th>天期</th><th>殖利率</th><th>前一交易日</th><th>日變動</th><th>一週前</th><th>一個月前</th></tr></thead><tbody><tr><td>2年期</td><td><span class="px">4.67%</span></td><td><span class="dim">4.74%</span></td><td><span class="down">－7bp</span></td><td>4.56%<br><span class="dim up">＋11bp</span></td><td>4.19%<br><span class="dim up">＋48bp</span></td></tr><tr><td>5年期</td><td><span class="px">4.78%</span></td><td><span class="dim">4.86%</span></td><td><span class="down">－8bp</span></td><td>4.75%<br><span class="dim up">＋3bp</span></td><td>4.37%<br><span class="dim up">＋41bp</span></td></tr><tr><td>10年期</td><td><span class="px">4.94%</span></td><td><span class="dim">5.01%</span></td><td><span class="down">－7bp</span></td><td>4.95%<br><span class="dim down">－1bp</span></td><td>4.71%<br><span class="dim up">＋23bp</span></td></tr><tr><td>30年期</td><td><span class="px">5.29%</span></td><td><span class="dim">5.35%</span></td><td><span class="down">－6bp</span></td><td>5.37%<br><span class="dim down">－8bp</span></td><td>5.28%<br><span class="dim up">＋1bp</span></td></tr><tr class="spread-row"><td colspan="6" class="freetext"><b>利差 2s10s:27bp(前一交易日27bp,持平);30Y-10Y利差:35bp(前一交易日34bp,+1bp)</b></td></tr><tr class="sub"><td colspan="6"><div class="note">短中長端殖利率同步下修、降幅相近,曲線形狀大致持平;惟拉長至一個月期間,2s10s利差由52bp收斂至27bp,顯示過去一個月曲線明顯趨平</div></td></tr></tbody></table></div>
+<div class="yccap">殖利率曲線 · 2Y／5Y／10Y／30Y</div><div class="yc"><svg viewBox="0 0 760 250" role="img" aria-label="美國公債殖利率曲線">
+<line class="yc-grid" x1="60" y1="213.7" x2="738" y2="213.7"/>
+<text class="yc-ax" x="52" y="217.7" text-anchor="end">4.00%</text>
+<line class="yc-grid" x1="60" y1="183.6" x2="738" y2="183.6"/>
+<text class="yc-ax" x="52" y="187.6" text-anchor="end">4.25%</text>
+<line class="yc-grid" x1="60" y1="153.5" x2="738" y2="153.5"/>
+<text class="yc-ax" x="52" y="157.5" text-anchor="end">4.50%</text>
+<line class="yc-grid" x1="60" y1="123.4" x2="738" y2="123.4"/>
+<text class="yc-ax" x="52" y="127.4" text-anchor="end">4.75%</text>
+<line class="yc-grid" x1="60" y1="93.3" x2="738" y2="93.3"/>
+<text class="yc-ax" x="52" y="97.3" text-anchor="end">5.00%</text>
+<line class="yc-grid" x1="60" y1="63.2" x2="738" y2="63.2"/>
+<text class="yc-ax" x="52" y="67.2" text-anchor="end">5.25%</text>
+<line class="yc-grid" x1="60" y1="33.1" x2="738" y2="33.1"/>
+<text class="yc-ax" x="52" y="37.1" text-anchor="end">5.50%</text>
+<text class="yc-ax" x="78.0" y="238" text-anchor="middle">2Y</text>
+<text class="yc-ax" x="294.7" y="238" text-anchor="middle">5Y</text>
+<text class="yc-ax" x="511.3" y="238" text-anchor="middle">10Y</text>
+<text class="yc-ax" x="728.0" y="238" text-anchor="middle">30Y</text>
+<path class="yc-mo" d="M78.0 190.9 L294.7 169.2 L511.3 128.2 L728.0 59.6"/>
+<path class="yc-prev" d="M78.0 124.6 L294.7 110.2 L511.3 92.1 L728.0 51.1"/>
+<path class="yc-now" d="M78.0 133.0 L294.7 119.8 L511.3 100.5 L728.0 58.4"/>
+<circle class="yc-dot" cx="78.0" cy="133.0" r="3.2"/>
+<text class="yc-val" x="78.0" y="122.0" text-anchor="start">4.67</text>
+<circle class="yc-dot" cx="294.7" cy="119.8" r="3.2"/>
+<text class="yc-val" x="294.7" y="108.8" text-anchor="middle">4.78</text>
+<circle class="yc-dot" cx="511.3" cy="100.5" r="3.2"/>
+<text class="yc-val" x="511.3" y="89.5" text-anchor="middle">4.94</text>
+<circle class="yc-dot" cx="728.0" cy="58.4" r="3.2"/>
+<text class="yc-val" x="728.0" y="47.4" text-anchor="end">5.29</text>
+</svg>
+<div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/17/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div>
 <div class="wrap"><table><caption>商品與匯率</caption><thead><tr><th>項目</th><th></th></tr></thead><tbody><tr><td><b>WTI原油（NYMEX近月期貨）：102.03美元/桶，-0.38（-0.37%）；美東 14:30 結算時點，前一交易日 09/16 為 102.41</b></td><td></td></tr><tr class="sub"><td colspan="2"><div class="note">沙烏地阿拉伯東西輸油管修復進度快於預期、部分產能可望提前恢復,加上美國原油庫存降幅不如市場預期,共同壓抑價格</div></td></tr><tr><td><b>Brent原油（ICE近月期貨）：104.91美元/桶，-0.88（-0.83%）；倫敦 19:30 結算時點，前一交易日 09/16 為 105.79</b></td><td></td></tr><tr class="sub"><td colspan="2"><div class="note">中東供應中斷疑慮降溫為主要壓抑因素,惟市場仍對區域情勢升溫保持敏感</div></td></tr><tr><td><b>黃金（COMEX近月期貨）：4,400.20美元/盎司，+12.00（+0.27%）；美東 13:30 結算時點，前一交易日 09/16 為 4,388.20</b></td><td></td></tr><tr class="sub"><td colspan="2"><div class="note">聯準會升息後公債殖利率回落,加上油價走軟緩解通膨疑慮,黃金回補前一交易日部分跌幅</div></td></tr><tr><td><b>美元指數DXY：100.214，-0.040（-0.04%）；美東 16:00（美股收盤時點），前一交易日 09/16 為 100.254</b></td><td></td></tr><tr class="sub"><td colspan="2"><div class="note">升息落地後殖利率同步走低,美元指數波動收斂,走勢大致持平</div></td></tr></tbody></table></div>
 </section>
 
@@ -487,7 +551,38 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 <div class="pwrap">
 <header class="ph"><div class="t">每日市場觀察<span>Daily Market Observation</span></div><div class="d"><b>2026-09-18</b>（台北）｜<b>2026-09-17</b> 紐約收盤<br>機構研究用・非投資建議</div></header>
 <section class="psec"><h3 class="ps"><span class="n">一、</span>美股行情</h3><table class="pt"><thead><tr><th>指數</th><th>收盤</th><th>日變動</th><th>一週前</th><th>一個月前</th><th>年初</th></tr></thead><tbody><tr><td>S&amp;P 500</td><td class="b">7,637.76</td><td><span class="up">＋85.95</span>　<span class="up">＋1.14%</span></td><td>7,591.70 <span class="up">（＋0.61%）</span></td><td>7,691.76 <span class="down">（－0.70%）</span></td><td>6,858.47 <span class="up">（＋11.36%）</span></td></tr><tr><td>Nasdaq 綜合</td><td class="b">26,418.30</td><td><span class="up">＋439.87</span>　<span class="up">＋1.69%</span></td><td>26,081.72 <span class="up">（＋1.29%）</span></td><td>26,289.71 <span class="up">（＋0.49%）</span></td><td>23,235.63 <span class="up">（＋13.70%）</span></td></tr><tr><td>道瓊工業</td><td class="b">51,778.04</td><td><span class="up">＋316.14</span>　<span class="up">＋0.61%</span></td><td>52,064.10 <span class="down">（－0.55%）</span></td><td>53,343.40 <span class="down">（－2.93%）</span></td><td>48,382.39 <span class="up">（＋7.02%）</span></td></tr><tr><td>費城半導體</td><td class="b">11,599.49</td><td><span class="up">＋353.38</span>　<span class="up">＋3.14%</span></td><td>11,614.17 <span class="down">（－0.13%）</span></td><td>11,992.46 <span class="down">（－3.28%）</span></td><td>7,367.47 <span class="up">（＋57.44%）</span></td></tr><tr><td>VIX</td><td class="b">15.44</td><td><span class="down">－2.27</span>　<span class="down">－12.82%</span></td><td>17.84 <span class="down">（－13.45%）</span></td><td>14.89 <span class="up">（＋3.69%）</span></td><td>14.51 <span class="up">（＋6.41%）</span></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">二、</span>債市與商品</h3><table class="pt"><caption>美國公債殖利率（U.S. Treasury 官網 09/17/2026 收盤）</caption><thead><tr><th>天期</th><th>殖利率</th><th>前一交易日</th><th>日變動</th><th>一週前</th><th>一個月前</th></tr></thead><tbody><tr><td>2年期</td><td class="b">4.67%</td><td>4.74%</td><td><span class="down">－7bp</span></td><td>4.56% <span class="up">（＋11bp）</span></td><td>4.19% <span class="up">（＋48bp）</span></td></tr><tr><td>5年期</td><td class="b">4.78%</td><td>4.86%</td><td><span class="down">－8bp</span></td><td>4.75% <span class="up">（＋3bp）</span></td><td>4.37% <span class="up">（＋41bp）</span></td></tr><tr><td>10年期</td><td class="b">4.94%</td><td>5.01%</td><td><span class="down">－7bp</span></td><td>4.95% <span class="down">（－1bp）</span></td><td>4.71% <span class="up">（＋23bp）</span></td></tr><tr><td>30年期</td><td class="b">5.29%</td><td>5.35%</td><td><span class="down">－6bp</span></td><td>5.37% <span class="down">（－8bp）</span></td><td>5.28% <span class="up">（＋1bp）</span></td></tr></tbody></table><table class="pt kv"><tbody><tr><td colspan="2" class="tx">利差 2s10s:27bp(前一交易日27bp,持平);30Y-10Y利差:35bp(前一交易日34bp,+1bp)<div class="pn">短中長端殖利率同步下修、降幅相近,曲線形狀大致持平;惟拉長至一個月期間,2s10s利差由52bp收斂至27bp,顯示過去一個月曲線明顯趨平</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">102.03美元/桶，-0.38（-0.37%）；美東 14:30 結算時點，前一交易日 09/16 為 102.41<div class="pn">沙烏地阿拉伯東西輸油管修復進度快於預期、部分產能可望提前恢復,加上美國原油庫存降幅不如市場預期,共同壓抑價格</div></td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">104.91美元/桶，-0.88（-0.83%）；倫敦 19:30 結算時點，前一交易日 09/16 為 105.79<div class="pn">中東供應中斷疑慮降溫為主要壓抑因素,惟市場仍對區域情勢升溫保持敏感</div></td></tr><tr><td class="k">黃金（COMEX近月期貨）</td><td class="tx">4,400.20美元/盎司，+12.00（+0.27%）；美東 13:30 結算時點，前一交易日 09/16 為 4,388.20<div class="pn">聯準會升息後公債殖利率回落,加上油價走軟緩解通膨疑慮,黃金回補前一交易日部分跌幅</div></td></tr><tr><td class="k">美元指數DXY</td><td class="tx">100.214，-0.040（-0.04%）；美東 16:00（美股收盤時點），前一交易日 09/16 為 100.254<div class="pn">升息落地後殖利率同步走低,美元指數波動收斂,走勢大致持平</div></td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">二、</span>債市與商品</h3><table class="pt"><caption>美國公債殖利率（U.S. Treasury 官網 09/17/2026 收盤）</caption><thead><tr><th>天期</th><th>殖利率</th><th>前一交易日</th><th>日變動</th><th>一週前</th><th>一個月前</th></tr></thead><tbody><tr><td>2年期</td><td class="b">4.67%</td><td>4.74%</td><td><span class="down">－7bp</span></td><td>4.56% <span class="up">（＋11bp）</span></td><td>4.19% <span class="up">（＋48bp）</span></td></tr><tr><td>5年期</td><td class="b">4.78%</td><td>4.86%</td><td><span class="down">－8bp</span></td><td>4.75% <span class="up">（＋3bp）</span></td><td>4.37% <span class="up">（＋41bp）</span></td></tr><tr><td>10年期</td><td class="b">4.94%</td><td>5.01%</td><td><span class="down">－7bp</span></td><td>4.95% <span class="down">（－1bp）</span></td><td>4.71% <span class="up">（＋23bp）</span></td></tr><tr><td>30年期</td><td class="b">5.29%</td><td>5.35%</td><td><span class="down">－6bp</span></td><td>5.37% <span class="down">（－8bp）</span></td><td>5.28% <span class="up">（＋1bp）</span></td></tr></tbody></table><div class="yc pyc"><svg viewBox="0 0 760 250" role="img" aria-label="美國公債殖利率曲線">
+<line class="yc-grid" x1="60" y1="213.7" x2="738" y2="213.7"/>
+<text class="yc-ax" x="52" y="217.7" text-anchor="end">4.00%</text>
+<line class="yc-grid" x1="60" y1="183.6" x2="738" y2="183.6"/>
+<text class="yc-ax" x="52" y="187.6" text-anchor="end">4.25%</text>
+<line class="yc-grid" x1="60" y1="153.5" x2="738" y2="153.5"/>
+<text class="yc-ax" x="52" y="157.5" text-anchor="end">4.50%</text>
+<line class="yc-grid" x1="60" y1="123.4" x2="738" y2="123.4"/>
+<text class="yc-ax" x="52" y="127.4" text-anchor="end">4.75%</text>
+<line class="yc-grid" x1="60" y1="93.3" x2="738" y2="93.3"/>
+<text class="yc-ax" x="52" y="97.3" text-anchor="end">5.00%</text>
+<line class="yc-grid" x1="60" y1="63.2" x2="738" y2="63.2"/>
+<text class="yc-ax" x="52" y="67.2" text-anchor="end">5.25%</text>
+<line class="yc-grid" x1="60" y1="33.1" x2="738" y2="33.1"/>
+<text class="yc-ax" x="52" y="37.1" text-anchor="end">5.50%</text>
+<text class="yc-ax" x="78.0" y="238" text-anchor="middle">2Y</text>
+<text class="yc-ax" x="294.7" y="238" text-anchor="middle">5Y</text>
+<text class="yc-ax" x="511.3" y="238" text-anchor="middle">10Y</text>
+<text class="yc-ax" x="728.0" y="238" text-anchor="middle">30Y</text>
+<path class="yc-mo" d="M78.0 190.9 L294.7 169.2 L511.3 128.2 L728.0 59.6"/>
+<path class="yc-prev" d="M78.0 124.6 L294.7 110.2 L511.3 92.1 L728.0 51.1"/>
+<path class="yc-now" d="M78.0 133.0 L294.7 119.8 L511.3 100.5 L728.0 58.4"/>
+<circle class="yc-dot" cx="78.0" cy="133.0" r="3.2"/>
+<text class="yc-val" x="78.0" y="122.0" text-anchor="start">4.67</text>
+<circle class="yc-dot" cx="294.7" cy="119.8" r="3.2"/>
+<text class="yc-val" x="294.7" y="108.8" text-anchor="middle">4.78</text>
+<circle class="yc-dot" cx="511.3" cy="100.5" r="3.2"/>
+<text class="yc-val" x="511.3" y="89.5" text-anchor="middle">4.94</text>
+<circle class="yc-dot" cx="728.0" cy="58.4" r="3.2"/>
+<text class="yc-val" x="728.0" y="47.4" text-anchor="end">5.29</text>
+</svg>
+<div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/17/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td colspan="2" class="tx">利差 2s10s:27bp(前一交易日27bp,持平);30Y-10Y利差:35bp(前一交易日34bp,+1bp)<div class="pn">短中長端殖利率同步下修、降幅相近,曲線形狀大致持平;惟拉長至一個月期間,2s10s利差由52bp收斂至27bp,顯示過去一個月曲線明顯趨平</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">102.03美元/桶，-0.38（-0.37%）；美東 14:30 結算時點，前一交易日 09/16 為 102.41<div class="pn">沙烏地阿拉伯東西輸油管修復進度快於預期、部分產能可望提前恢復,加上美國原油庫存降幅不如市場預期,共同壓抑價格</div></td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">104.91美元/桶，-0.88（-0.83%）；倫敦 19:30 結算時點，前一交易日 09/16 為 105.79<div class="pn">中東供應中斷疑慮降溫為主要壓抑因素,惟市場仍對區域情勢升溫保持敏感</div></td></tr><tr><td class="k">黃金（COMEX近月期貨）</td><td class="tx">4,400.20美元/盎司，+12.00（+0.27%）；美東 13:30 結算時點，前一交易日 09/16 為 4,388.20<div class="pn">聯準會升息後公債殖利率回落,加上油價走軟緩解通膨疑慮,黃金回補前一交易日部分跌幅</div></td></tr><tr><td class="k">美元指數DXY</td><td class="tx">100.214，-0.040（-0.04%）；美東 16:00（美股收盤時點），前一交易日 09/16 為 100.254<div class="pn">升息落地後殖利率同步走低,美元指數波動收斂,走勢大致持平</div></td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">9月費城聯準銀行製造業指數</td><td class="tx">實際值+37.8,市場預期+30.5,前值+47.4<div class="pn">實際值優於預期但較前月明顯回落,顯示區域製造業擴張動能降溫,惟仍處擴張區間(高於0)</div></td></tr><tr><td class="k">當週首次請領失業救濟金人數(至09/12當週)</td><td class="tx">實際19.6萬人,市場預期20.7萬人,前值20.6萬人<div class="pn">實際值遠低於預期與前值,顯示勞動市場尚未出現明顯降溫跡象,與聯準會近期升息立場所依據的「勞動市場強勁」判斷相符</div></td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">09/23(三)美東約09:45:9月S&amp;P Global製造業/服務業PMI初值</td></tr><tr><td colspan="2" class="tx">09/25(五)美東08:30:當週首次請領失業救濟金人數</td></tr><tr><td colspan="2" class="tx">09/26(六,台北時間)美東08:30:8月PCE物價指數(核心PCE年增率)</td></tr><tr><td colspan="2" class="tx">10/28(三)美東14:00:FOMC利率決議聲明(現行目標區間375-400bp);14:30:Fed主席Warsh記者會</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><div class="pfed"><div class="pbar"><span class="b2" style="flex:44.6"></span><span class="b1" style="flex:55.4"></span></div><div><b>維持不變 44.6%、升息25bp 55.4%</b>　<span class="m">CME FedWatch｜2026-10-28 FOMC｜資料時間 17 Sep 2026 05:32:25 CT</span></div></div><ul class="pl"><li>最近一次FOMC(2026-10-28,現行目標區間375-400bp)</li><li>維持不變(375-400bp):44.6%</li><li>升息25bp(400-425bp):55.4% 資料時間:2026年9月17日05:32:25(CT),CME官方頁面標示<div class="pn">9月16日FOMC已升息25bp至375-400bp,為2023年以來首次升息,主席Warsh於記者會表示通膨「過高過久」,並稱尚未確信通膨正以足夠速度回向目標;會後公布之經濟預測摘要顯示18位與會官員中有16位預期年內可能再升息一次。CME機率顯示10月再升息25bp機率(55.4%)略高於維持不變(44.6%),方向與上述官員預測分佈一致</div></li></ul></section>
