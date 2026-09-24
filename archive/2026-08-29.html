@@ -293,6 +293,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -420,6 +424,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 </head>
 <body data-report-date="2026-08-29">
@@ -504,7 +512,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">2026-09-01（二）美東10:00 ISM製造業PMI（8月）；10:00 JOLTS職缺（7月）</span><div class="note">為Warsh鷹派發言後首個重要景氣指標，市場將檢視是否與Chicago PMI的疲弱信號一致</div></li>
 <li><span class="it">2026-09-02（三）美東08:15 ADP全國就業報告（8月）</span></li>
 <li><span class="it">2026-09-03（四）美東08:30 初領失業救濟金人數（當週）；10:00 ISM非製造業PMI（8月）</span></li>
@@ -574,7 +582,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 08/28/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">39bp，較08/27的47bp收窄8bp<div class="pn">短端(2Y +14bp)升幅遠大於長端(10Y +6bp)，曲線呈現熊市趨平（bear flattening），顯示市場正集中為9月升息機率重新定價短端</div></td></tr><tr><td class="k">30Y-10Y利差</td><td class="tx">49bp，較08/27的52bp收窄3bp<div class="pn">長端利差同步小幅收斂，整條曲線在Warsh鷹派談話後全面上移，短端上移速度最快</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">83.40美元/桶，-0.13（-0.16%）；交易所結算價，前一交易日 08/27 為 83.53</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">88.10美元/桶，-0.42（-0.47%）；交易所結算價，前一交易日 08/27 為 88.52</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,529.90美元/盎司，-134.10（-2.88%）；交易所結算價，前一交易日 08/27 為 4,664.00</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.657，+0.504（+0.51%）；美東 16:00 匯率計算，前一交易日 08/27 為 99.153</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">Chicago PMI（8月）</td><td class="tx">實際47.1／市場預期57.9／前值(7月)57.6<div class="pn">大幅不如預期並跌破50榮枯線，由擴張急轉收縮，與近期偏強的製造業數據形成明顯背離，需留意單月數據波動性</div></td></tr><tr><td class="k">密西根大學消費者信心指數終值（8月）</td><td class="tx">實際51.7／市場預期51.0／前值(7月終值)55.2<div class="pn">終值較初值小幅上修，但仍顯著低於7月終值，反映家庭對通膨與能源價格上升的疑慮未見緩解</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">2026-09-01（二）美東10:00 ISM製造業PMI（8月）；10:00 JOLTS職缺（7月）<div class="pn">為Warsh鷹派發言後首個重要景氣指標，市場將檢視是否與Chicago PMI的疲弱信號一致</div></td></tr><tr><td colspan="2" class="tx">2026-09-02（三）美東08:15 ADP全國就業報告（8月）</td></tr><tr><td colspan="2" class="tx">2026-09-03（四）美東08:30 初領失業救濟金人數（當週）；10:00 ISM非製造業PMI（8月）</td></tr><tr><td colspan="2" class="tx">2026-09-04（五）美東08:30 就業狀況報告／非農就業人數（8月）<div class="pn">為9月16日FOMC會議前最後一份完整非農報告，市場預期其結果將大幅影響升息機率定價</div></td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>2026-09-01（二）美東10:00 ISM製造業PMI（8月）；10:00 JOLTS職缺（7月）<div class="pn">為Warsh鷹派發言後首個重要景氣指標，市場將檢視是否與Chicago PMI的疲弱信號一致</div></li><li>2026-09-02（三）美東08:15 ADP全國就業報告（8月）</li><li>2026-09-03（四）美東08:30 初領失業救濟金人數（當週）；10:00 ISM非製造業PMI（8月）</li><li>2026-09-04（五）美東08:30 就業狀況報告／非農就業人數（8月）<div class="pn">為9月16日FOMC會議前最後一份完整非農報告，市場預期其結果將大幅影響升息機率定價</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>9月16日FOMC會議升息機率：約59%，較Warsh演說前(08/27週四)的約35%大幅攀升｜來源：CME FedWatch，截至美東時間2026年8月28日<div class="pn">Warsh在傑克森霍爾年會演說指出「本季PCE與CPI數據雖優於預期，但不代表潛在通膨趨勢已實質改善」，市場解讀為鷹派訊號，升息機率已逼近對半分（coin flip），隱含維持不變與降息機率合計降至約41%</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">站上4.75%</td><td>市場進一步為9月升息定價，長端融資成本壓力上升</td></tr><tr><td>2年期公債殖利率</td><td class="mk">站上4.40%</td><td>短端政策利率預期進一步向鷹派修正</td></tr><tr><td>CME FedWatch 9月升息機率</td><td class="mk">突破65%</td><td>市場定價由「對半分」轉向「升息為基準情境」</td></tr><tr><td>VIX</td><td class="mk">跌破13</td><td>市場對政策不確定性的擔憂持續降溫</td></tr><tr><td>Russell 2000</td><td class="mk">跌破2,950</td><td>利率敏感型中小型股對殖利率上升的脆弱性增加</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>

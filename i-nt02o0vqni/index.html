@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -421,6 +425,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 <style>
 /* 網頁：工具列「歷史查詢」左側的 logo＋附註 */
@@ -534,8 +542,16 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
-<li><span class="it">2026-09-24（週四）08:30 ET 當週初次申請失業救濟金人數 2026-09-24（週四）10:00 ET 8月新屋銷售 2026-09-25（週五）08:30 ET 8月耐久財訂單、2026年Q2 GDP終值（第三次估計） 2026-09-25（週五）10:00 ET 密西根大學9月消費者信心指數終值（初值47.8，創連續第二個月下滑） 2026-09-30（週三）08:15 ET ADP 9月民間就業報告 2026-09-30（週三）08:30 ET 8月PCE物價指數／個人所得與支出 2026-10-01（週四）10:00 ET ISM 9月製造業PMI 2026-10-02（週五）08:30 ET 9月非農就業報告 2026-10-27至28日 FOMC會議，10/28 14:00政策聲明、14:30 Warsh主席記者會</span></li>
+<ul class="plain bullets">
+<li><span class="it">2026-09-24（週四）08:30 ET 當週初次申請失業救濟金人數</span></li>
+<li><span class="it">2026-09-24（週四）10:00 ET 8月新屋銷售</span></li>
+<li><span class="it">2026-09-25（週五）08:30 ET 8月耐久財訂單、2026年Q2 GDP終值（第三次估計）</span></li>
+<li><span class="it">2026-09-25（週五）10:00 ET 密西根大學9月消費者信心指數終值（初值47.8，創連續第二個月下滑）</span></li>
+<li><span class="it">2026-09-30（週三）08:15 ET ADP 9月民間就業報告</span></li>
+<li><span class="it">2026-09-30（週三）08:30 ET 8月PCE物價指數／個人所得與支出</span></li>
+<li><span class="it">2026-10-01（週四）10:00 ET ISM 9月製造業PMI</span></li>
+<li><span class="it">2026-10-02（週五）08:30 ET 9月非農就業報告</span></li>
+<li><span class="it">2026-10-27至28日 FOMC會議，10/28 14:00政策聲明、14:30 Warsh主席記者會</span></li>
 </ul>
 </section>
 
@@ -603,7 +619,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/23/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">利差</td><td class="tx">2s10s為+26bp（前日+25bp，走陡+1bp）；30Y–10Y為+29bp（前日+33bp，走平-4bp）<div class="pn">中段殖利率(5年期)漲幅最大，超過長端30年期漲幅，顯示市場對中期升息路徑重新定價的力道大於長期通膨溢酬的變動</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">92.18美元/桶，+1.55（+1.71%）；美東 14:30 結算時點，前一交易日 09/22 為 90.63<div class="pn">盤面反映美伊代表於聯合國大會場邊會談後的原油地緣風險重新評估</div></td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">98.19美元/桶，-1.18（-1.19%）；倫敦 19:30 結算時點，前一交易日 09/22 為 99.37<div class="pn">同一時段市場亦關注隔日美中元首會晤前夕的貿易動向</div></td></tr><tr><td class="k">黃金（COMEX近月期貨）</td><td class="tx">4,318.60美元/盎司，-58.60（-1.34%）；美東 13:30 結算時點，前一交易日 09/22 為 4,377.20<div class="pn">結算時點早於當日稍晚公布的公債殖利率跳升，避險買盤未完全反映殖利率走勢</div></td></tr><tr><td class="k">美元指數DXY</td><td class="tx">101.113，+0.566（+0.56%）；美東 16:00（美股收盤時點），前一交易日 09/22 為 100.547</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">S&amp;P Global 9月Flash製造業PMI</td><td class="tx">57.0／市場預期53.7／前值53.9 S&amp;P Global 9月Flash服務業PMI：58.7／市場預期55.8／前值56.5 S&amp;P Global 9月Flash綜合PMI：58.4／市場預期55.3／前值56.0<div class="pn">綜合PMI創2021年7月以來新高，新訂單為2022年4月以來最快增速，投入成本漲幅為2022年以來最快；數據公布後10年期公債殖利率單日跳升15bp並觸及2007年以來新高，市場解讀為通膨壓力尚未緩解、增加對10月再升息的定價權重</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">2026-09-24（週四）08:30 ET 當週初次申請失業救濟金人數 2026-09-24（週四）10:00 ET 8月新屋銷售 2026-09-25（週五）08:30 ET 8月耐久財訂單、2026年Q2 GDP終值（第三次估計） 2026-09-25（週五）10:00 ET 密西根大學9月消費者信心指數終值（初值47.8，創連續第二個月下滑） 2026-09-30（週三）08:15 ET ADP 9月民間就業報告 2026-09-30（週三）08:30 ET 8月PCE物價指數／個人所得與支出 2026-10-01（週四）10:00 ET ISM 9月製造業PMI 2026-10-02（週五）08:30 ET 9月非農就業報告 2026-10-27至28日 FOMC會議，10/28 14:00政策聲明、14:30 Warsh主席記者會</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>2026-09-24（週四）08:30 ET 當週初次申請失業救濟金人數</li><li>2026-09-24（週四）10:00 ET 8月新屋銷售</li><li>2026-09-25（週五）08:30 ET 8月耐久財訂單、2026年Q2 GDP終值（第三次估計）</li><li>2026-09-25（週五）10:00 ET 密西根大學9月消費者信心指數終值（初值47.8，創連續第二個月下滑）</li><li>2026-09-30（週三）08:15 ET ADP 9月民間就業報告</li><li>2026-09-30（週三）08:30 ET 8月PCE物價指數／個人所得與支出</li><li>2026-10-01（週四）10:00 ET ISM 9月製造業PMI</li><li>2026-10-02（週五）08:30 ET 9月非農就業報告</li><li>2026-10-27至28日 FOMC會議，10/28 14:00政策聲明、14:30 Warsh主席記者會</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><div class="pfed"><div class="pbar"><span class="b2" style="flex:30.3"></span><span class="b1" style="flex:69.7"></span></div><div><b>維持不變 30.3%、升息25bp 69.7%</b>　<span class="m">CME FedWatch｜2026-10-28 FOMC｜資料時間 23 Sep 2026 05:32:34 CT</span></div></div><ul class="pl"><li>維持不變（375-400bp）：30.3% 升息25bp（400-425bp）：69.7% 資料時間：2026年9月23日05:32:34（CT），來源CME Group FedWatch官方頁面<div class="pn">市場定價持續反映10月會議升息機率高於維持不變，與9月Flash PMI顯示的通膨壓力上升及殖利率同步走升方向一致；自Warsh 8月底Jackson Hole演說強調「仍有工作要做」以來，市場對升息路徑的押注持續偏鷹</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">是否進一步站上5.15%</td><td>代表市場持續消化10月再升息機率、房貸與企業融資成本同步走高 費城半導體指數　能否守住近期高點並延續抗跌　反映AI/半導體類股相對大盤修正的抗性是否持續 CME FedWatch 10月會議升息機率　是否續升逾70%　代表市場對再升息路徑的定價一致性提高 9/30 PCE物價指數（核心，年增率）　是否高於預期　檢驗9月Flash PMI顯示的投入成本升溫是否已傳導至消費端通膨 10/2非農就業報告　新增就業與失業率變化　作為勞動市場是否如官員所述風險趨緩的關鍵指標</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-24 06:49</span></footer>

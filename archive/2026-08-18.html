@@ -293,6 +293,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -420,6 +424,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 </head>
 <body data-report-date="2026-08-18">
@@ -508,7 +516,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">8/18（二）盤前：Home Depot（HD）2026 Q2財報</span></li>
 <li><span class="it">8/18（二）美東8:30：7月房屋開工／建照數據公布</span></li>
 <li><span class="it">8/19（三）美東8:00：Target（TGT）2026 Q2財報電話會議；9:00：Lowe's（LOW）2026 Q2財報電話會議</span></li>
@@ -584,7 +592,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 08/17/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">利差</td><td class="tx">2s10s +53bp（前日+51bp，+2bp）；30Y–10Y +59bp（前日+57bp，+2bp）<div class="pn">長天期殖利率上升速度快於短天期，曲線續呈溫和趨陡，較符合財政赤字／期限溢酬疑慮驅動，而非短端降息預期主導</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">84.50美元/桶，+2.10（+2.55%）；交易所結算價，前一交易日 08/14 為 82.40</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">90.87美元/桶，+2.35（+2.65%）；交易所結算價，前一交易日 08/14 為 88.52</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,473.70美元/盎司，+36.40（+0.82%）；交易所結算價，前一交易日 08/14 為 4,437.30</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.583，-0.066（-0.07%）；美東 16:00 匯率計算，前一交易日 08/14 為 99.649</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">Empire State製造業指數</td><td class="tx">20.6／市場預期11.0／前值15.6<div class="pn">實際值近乎為預期兩倍，新訂單、出貨分項同步走強，顯示紐約州製造業景氣意外加速擴張，與同期消費端數據形成對比</div></td></tr><tr><td class="k">NAHB／富國銀行住宅市場指數</td><td class="tx">35／市場預期33／前值34<div class="pn">連續第16個月低於50之榮枯線，35%建商仍以降價刺激買氣，反映高房貸利率持續壓抑購屋需求，建商信心僅溫和改善</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td class="k">8/18（二）盤前</td><td class="tx">Home Depot（HD）2026 Q2財報</td></tr><tr><td class="k">8/18（二）美東8:30</td><td class="tx">7月房屋開工／建照數據公布</td></tr><tr><td class="k">8/19（三）美東8:00</td><td class="tx">Target（TGT）2026 Q2財報電話會議；9:00：Lowe's（LOW）2026 Q2財報電話會議</td></tr><tr><td class="k">8/19（三）美東14:00</td><td class="tx">FOMC 7/28-29會議紀要公布</td></tr><tr><td class="k">8/20（四）盤前</td><td class="tx">Walmart（WMT）2026 Q2財報</td></tr><tr><td class="k">8/27-8/29</td><td class="tx">Jackson Hole全球央行年會（懷俄明州）；8/28（五）Fed主席華許（Kevin Warsh）發表就任後首次年會主題演講</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>8/18（二）盤前：Home Depot（HD）2026 Q2財報</li><li>8/18（二）美東8:30：7月房屋開工／建照數據公布</li><li>8/19（三）美東8:00：Target（TGT）2026 Q2財報電話會議；9:00：Lowe's（LOW）2026 Q2財報電話會議</li><li>8/19（三）美東14:00：FOMC 7/28-29會議紀要公布</li><li>8/20（四）盤前：Walmart（WMT）2026 Q2財報</li><li>8/27-8/29：Jackson Hole全球央行年會（懷俄明州）；8/28（五）Fed主席華許（Kevin Warsh）發表就任後首次年會主題演講</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>9月16-17日FOMC會議：維持不變機率69.4%／升息25bp機率30.4%／降息機率趨近於零（截至美東時間8月17日，CME FedWatch）<div class="pn">較8月12日CPI公布後約42%的升息機率續降，反映7月CPI年增3.4%、核心2.5%皆符合預期，加上7月零售銷售意外下滑0.6%，共同降低市場對9月升息的定價；惟機率分布仍呈「不變vs升息」二元格局，降息機率極低，顯示華許主席任內政策路徑市場定價仍偏鷹派，與一般降息循環時期明顯不同</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">站上4.75%</td><td>市場重新定價9月升息機率上修</td></tr><tr><td>30年期公債殖利率</td><td class="mk">站上5.35%</td><td>期限溢酬續走高，財政赤字疑慮成為長債定價主軸</td></tr><tr><td>Brent原油（期貨）</td><td class="mk">站上95美元</td><td>荷莫茲海峽供應中斷風險溢酬進一步計入通膨預期</td></tr><tr><td>DXY美元指數</td><td class="mk">跌破99.00</td><td>降息／不升息預期持續主導匯市定價</td></tr><tr><td>CME FedWatch 9月升息機率</td><td class="mk">回升至45%以上</td><td>市場對鷹派政策路徑之定價顯著升溫</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>

@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -421,6 +425,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 <style>
 /* 網頁：工具列「歷史查詢」左側的 logo＋附註 */
@@ -546,7 +554,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">五</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">8/12（三）美東08:30 消費者物價指數（CPI）／核心CPI（7月）</span></li>
 <li><span class="it">8/13（四）美東08:30 生產者物價指數（PPI，7月）</span></li>
 <li><span class="it">8/14（五）美東08:30 零售銷售月增率（7月），市場預期+0.2%，前值+0.2%</span></li>
@@ -633,7 +641,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 08/10/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">47bp（10Y4.72%−2Y4.25%），前一交易日(8/7)為46bp（4.65%−4.19%），+1bp<div class="pn">細項：曲線微幅走陡，但短端與長端同步上移幅度接近（2Y+6bp、10Y+7bp），較接近整體殖利率水準平移，而非單一端點驅動的陡化。</div></td></tr><tr><td class="k">30Y−10Y利差</td><td class="tx">53bp（5.25%−4.72%），前一交易日(8/7)為54bp（5.19%−4.65%），-1bp<div class="pn">細項：長天期端微幅走平，顯示超長端對通膨溢酬的計價略為收斂。</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">82.13美元/桶，+3.95（+5.05%）；交易所結算價，前一交易日 08/07 為 78.18</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">87.72美元/桶，+4.17（+4.99%）；交易所結算價，前一交易日 08/07 為 83.55</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,419.70美元/盎司，+20.00（+0.45%）；交易所結算價，前一交易日 08/07 為 4,399.70</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.817，+0.259（+0.26%）；美東 16:00 匯率計算，前一交易日 08/07 為 99.558</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>個股焦點</h3><table class="pt kv"><tbody><tr><td class="k">monday.com（MNDY）</td><td class="tx">股價下跌7.83%至85.84美元（2026 Q2財報後，正常交易時段）<div class="pn">細項：2026 Q2營收3.646億美元，YoY+22%，優於市場預期；EPS 1.48美元優於市場預期1.14美元；惟第三季財測營收3.68-3.70億美元，隱含成長率降至16-17%，較Q2的22%明顯放緩，加上近期裁員20%人力，引發市場對成長動能疑慮。</div></td></tr><tr><td class="k">Axsome Therapeutics（AXSM）</td><td class="tx">盤前上漲3.18%至219.50美元（2026 Q2財報後）<div class="pn">細項：2026 Q2淨產品營收2.184億美元，YoY+46%，略低於市場預期2.2192億美元；每股虧損0.99美元，遜於市場預期虧損0.89美元；惟AXS-12（猝睡症）新藥申請獲FDA受理，PDUFA目標日訂於2027/5/1，市場聚焦法規與商業化進展而非單季小幅未達標。</div></td></tr><tr><td class="k">Intel（INTC）</td><td class="tx">下跌4.1%<div class="pn">細項：公司宣布擬發行150億美元普通股（另有2.25億美元超額配售選擇權），用於晶圓代工與AI相關資本支出，2026年資本支出指引上修至逾200億美元；市場對股權稀釋疑慮壓抑股價，但半導體類股整體情緒回穩帶動股價自低點反彈。</div></td></tr><tr><td class="k">Rocket Lab（RKLB）</td><td class="tx">2026 Q2財報於盤後公布<div class="pn">細項：營收2.3407億美元，優於市場預期2.3162億美元，創同期新高，主要受太空系統業務成長與新合約挹注；在手訂單積壓達23.6億美元；惟淨利率為負26.87%，仍處虧損擴張階段。</div></td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">四、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">本交易日（8/10）無重大官方總體經濟數據排程公布<div class="pn">細項：市場聚焦上週五(8/7)公布之7月非農就業與地緣政治消息，本週的通膨數據（CPI/PPI）與零售銷售尚未公布。</div></td></tr><tr><td class="k">7月非農就業（上週五8/7公布，作為本週初盤面背景）</td><td class="tx">實際值-2.3萬人，市場預期+8.3萬人，前值（經下修後三個月均值降至2萬人）<div class="pn">細項：實際值與預期落差逾10萬人，主因政府部門減少5.3萬個職位、休閒餐飲業減少4萬個職位；失業率降至4.1%但主因勞動參與率下滑；平均時薪年增率降至3.2%，為2021年5月以來最低，顯示勞動市場降溫但非典型「良性降溫」。</div></td></tr><tr><td class="k">地緣政治事件</td><td class="tx">Hormuz海峽伊朗與阿曼協議未達成<div class="pn">細項：伊朗外長表示須美方解除制裁並支付戰爭賠款等條件方願重新開放航道，市場計入供給中斷風險，帶動油價單日跳漲逾5%。</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">五、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">8/12（三）美東08:30 消費者物價指數（CPI）／核心CPI（7月）</td></tr><tr><td colspan="2" class="tx">8/13（四）美東08:30 生產者物價指數（PPI，7月）</td></tr><tr><td colspan="2" class="tx">8/14（五）美東08:30 零售銷售月增率（7月），市場預期+0.2%，前值+0.2%</td></tr><tr><td colspan="2" class="tx">8/14（五）美東08:30 核心零售銷售（不含汽車），市場預期+0.2%，前值-0.2%</td></tr><tr><td colspan="2" class="tx">8/14（五）美東08:30 進口物價指數月增率，市場預期+0.1%</td></tr><tr><td colspan="2" class="tx">8/14（五）美東08:30 工業生產月增率，市場預期+0.2%；產能利用率市場預期76.3%</td></tr><tr><td colspan="2" class="tx">8/14（五）密西根大學消費者信心初值，市場預期68.5</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">五、</span>未來關鍵事件</h3><ul class="pl bullets"><li>8/12（三）美東08:30 消費者物價指數（CPI）／核心CPI（7月）</li><li>8/13（四）美東08:30 生產者物價指數（PPI，7月）</li><li>8/14（五）美東08:30 零售銷售月增率（7月），市場預期+0.2%，前值+0.2%</li><li>8/14（五）美東08:30 核心零售銷售（不含汽車），市場預期+0.2%，前值-0.2%</li><li>8/14（五）美東08:30 進口物價指數月增率，市場預期+0.1%</li><li>8/14（五）美東08:30 工業生產月增率，市場預期+0.2%；產能利用率市場預期76.3%</li><li>8/14（五）密西根大學消費者信心初值，市場預期68.5</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>CME FedWatch（9/16 FOMC會議）：維持利率不變機率55.6%，升息25bp機率44.4%（截至美東時間8月10日08:00）<div class="pn">細項：一週前(7/31)市場曾定價67%機率升息、33%不變，顯示升息預期略為降溫但仍維持偏高水準，與Polymarket近期讀數方向一致。</div></li><li>Polymarket／Kalshi（9月FOMC）：不變機率約61-65%，升息25bp機率約37-38%，降息機率約2%<div class="pn">細項：7/29 FOMC會議已維持利率於3.50%-3.75%區間不變，惟三位官員因持續通膨與地緣政治風險投下升息異議票，強化市場對9月可能升息的定價。</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">七、</span>數據解讀</h3><ul class="pl"><li>殖利率曲線：依據數據，2s10s利差由前一交易日46bp小幅走陡至47bp（+1bp），30Y-10Y則由54bp微幅走平至53bp（-1bp），且2Y、10Y、30Y當日同步上移6-7bp。此組合顯示曲線整體平移為主、斜率變化極小，較符合市場對政策利率路徑重新定價（而非單純長端通膨溢酬變化）的訊號。</li><li>跨資產連動：依據數據，公債殖利率四天期同步上升6-7bp、DXY回升至99.7、WTI因地緣風險大漲5.05%，而四大股指普遍小跌（S&amp;P -0.06%至Russell -0.56%）、黃金現貨小幅走低。股債匯商同步反映「短線避險降溫、油價風險溢酬上升」的組合，而非單一資產類別的獨立訊號。</li><li>市場廣度與輪動：依據數據，Russell 2000（-0.56%）跌幅大於S&amp;P 500（-0.06%）達50bp，能源類股（XLE，油價+5%帶動）領漲，科技與房地產類股落後（Intel -4.1%拖累半導體）。此結構顯示資金呈現「防禦／原物料類股相對抗跌、小型股與成長型科技股相對弱勢」的輪動特徵。</li><li>歷史數據變動：依據數據，S&amp;P 500當日7,753.11，較一週前(8/3)7,600.50上漲2.01%、較一個月前(7/10)7,575.39上漲2.35%、較年初(1/2)6,858.47上漲13.04%；10年期殖利率當日4.72%，較一週前(8/3)4.70%（+2bp）、一個月前(7/10)4.56%（+16bp）走升。股指年初以來雙位數漲幅與殖利率一個月內走升16bp並存，顯示風險資產上漲並未伴隨殖利率同步下滑，反映市場對成長與通膨/利率路徑的定價同時偏正面而非典型「殖利率下滑挺股市」模式。</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">八、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>CPI年增率（8/12公布）</td><td class="mk">高於前值或市場預期</td><td>代表通膨黏性強化9月FOMC升息定價，可能推升短端殖利率並壓抑股市評價</td></tr><tr><td>Hormuz海峽航運狀況</td><td class="mk">每日通行船舶數回升至戰前水準（約130艘/日）附近</td><td>代表地緣風險溢酬可望自油價中消退</td></tr><tr><td>10年期公債殖利率</td><td class="mk">站上4.75%-4.80%</td><td>代表市場對利率路徑重新定價幅度擴大，可能牽動股票估值</td></tr><tr><td>CME FedWatch 9月FOMC升息機率</td><td class="mk">站上50%</td><td>代表市場正式將升息列為基準情境而非尾端風險</td></tr><tr><td>Russell 2000相對S&amp;P 500表現</td><td class="mk">相對弱勢持續擴大</td><td>代表市場廣度與風險偏好進一步收斂</td></tr><tr><td>Intel後續股權增發定價與認購狀況</td><td class="mk">若增發溢價偏低或超額認購不足</td><td>代表市場對半導體資本支出擴張疑慮上升</td></tr></tbody></table></section>

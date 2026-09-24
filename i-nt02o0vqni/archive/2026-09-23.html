@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -421,6 +425,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 <style>
 /* 網頁：工具列「歷史查詢」左側的 logo＋附註 */
@@ -532,7 +540,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">09/24（週四）08:30 ET　初次申請失業救濟金人數；房屋開工與營建許可（8月）</span></li>
 <li><span class="it">09/25（週五）08:30 ET　耐久財訂單（8月）</span><div class="note">核心訂單為企業資本支出的先行指標</div></li>
 <li><span class="it">09/29（週二）10:00 ET　Conference Board消費者信心指數（9月）</span></li>
@@ -607,7 +615,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/22/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">利差</td><td class="tx">2s10s為25bp（前日20bp，+5bp）；30Y–10Y為33bp（前日33bp，持平）<div class="pn">前端殖利率下滑、中長端持平，殖利率曲線小幅走陡，短端反映市場對近月政策路徑的微幅修正</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">90.63美元/桶，-1.73（-1.87%）；美東 14:30 結算時點，前一交易日 09/21 為 92.36<div class="pn">結算時段價格走弱，與Brent走勢出現分歧</div></td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">99.37美元/桶，+3.13（+3.25%）；倫敦 19:30 結算時點，前一交易日 09/21 為 96.24<div class="pn">市場持續關注荷姆茲海峽油輪通行狀況與美伊外交協商進展</div></td></tr><tr><td class="k">黃金（COMEX近月期貨）</td><td class="tx">4,377.20美元/盎司，-7.20（-0.16%）；美東 13:30 結算時點，前一交易日 09/21 為 4,384.40<div class="pn">結算時點早於當日稍晚公布的市場動態，變動幅度有限</div></td></tr><tr><td class="k">美元指數DXY</td><td class="tx">100.547，+0.119（+0.12%）；美東 16:00（美股收盤時點），前一交易日 09/21 為 100.428<div class="pn">與殖利率短端變動方向並非完全一致，反映外匯市場對政策路徑的獨立定價</div></td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">里奇蒙聯邦準備銀行製造業指數（9月）</td><td class="tx">實際值-2／市場預期5／前值4（8月）<div class="pn">大幅低於預期並轉為負值，反映區域製造業活動明顯轉弱，與同日費城半導體指數強漲形成對比，顯示傳統製造業與AI相關資本支出循環走勢脫鉤</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">09/24（週四）08:30 ET　初次申請失業救濟金人數；房屋開工與營建許可（8月）</td></tr><tr><td colspan="2" class="tx">09/25（週五）08:30 ET　耐久財訂單（8月）<div class="pn">核心訂單為企業資本支出的先行指標</div></td></tr><tr><td colspan="2" class="tx">09/29（週二）10:00 ET　Conference Board消費者信心指數（9月）</td></tr><tr><td colspan="2" class="tx">09/30（週三）08:30 ET　PCE物價指數（8月）；GDP第2季最終估值<div class="pn">PCE為Fed最重視之通膨指標，前值（7月）年增3.7%、核心年增3.3%</div></td></tr><tr><td colspan="2" class="tx">10/01（週四）10:00 ET　ISM製造業PMI（9月）</td></tr><tr><td colspan="2" class="tx">10/02（週五）08:30 ET　非農就業報告（9月）</td></tr><tr><td colspan="2" class="tx">10/28（週三）14:00 ET　FOMC利率決議；14:30 ET　Warsh主席記者會</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>09/24（週四）08:30 ET　初次申請失業救濟金人數；房屋開工與營建許可（8月）</li><li>09/25（週五）08:30 ET　耐久財訂單（8月）<div class="pn">核心訂單為企業資本支出的先行指標</div></li><li>09/29（週二）10:00 ET　Conference Board消費者信心指數（9月）</li><li>09/30（週三）08:30 ET　PCE物價指數（8月）；GDP第2季最終估值<div class="pn">PCE為Fed最重視之通膨指標，前值（7月）年增3.7%、核心年增3.3%</div></li><li>10/01（週四）10:00 ET　ISM製造業PMI（9月）</li><li>10/02（週五）08:30 ET　非農就業報告（9月）</li><li>10/28（週三）14:00 ET　FOMC利率決議；14:30 ET　Warsh主席記者會</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><div class="pfed"><div class="pbar"><span class="b2" style="flex:45.8"></span><span class="b1" style="flex:54.2"></span></div><div><b>維持不變 45.8%、升息25bp 54.2%</b>　<span class="m">CME FedWatch｜2026-10-28 FOMC｜資料時間 22 Sep 2026 05:33:48 CT</span></div></div><ul class="pl"><li>最近一次FOMC：2026-10-28（現行目標區間375-400bp）</li><li>維持不變（375-400bp）：45.8%</li><li>升息25bp（400-425bp）：54.2% 資料時間：22 Sep 2026 05:33:48 CT（CME官方頁面標示）<div class="pn">市場定價略傾向再升息一碼，呼應Warsh主席9月16日FOMC記者會鷹派立場（強調應聚焦通膨趨勢而非單一數據點、核心通膨尚未「有意義改善」）；9月FOMC會議已升息25bp至375-400bp區間，為2023年以來首次升息</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">站上5.00%</td><td>顯示市場對Fed延續升息路徑重新定價</td></tr><tr><td>PCE物價指數（8月，09/30公布）</td><td class="mk">核心年增率高於3.4%</td><td>與Fed最新核心PCE預測形成對照</td></tr><tr><td>非農就業報告（9月，10/02公布）</td><td class="mk">新增就業與失業率變化</td><td>影響10/28 FOMC決策機率分布</td></tr><tr><td>費城半導體指數</td><td class="mk">與道瓊等傳統類股表現分歧持續擴大</td><td>反映AI資本支出循環與傳統產業景氣脫鉤程度</td></tr><tr><td>CME FedWatch 10/28升息機率</td><td class="mk">突破60%或回落至50%以下</td><td>顯示市場對鷹派路徑信心的變化方向</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-23 06:52</span></footer>

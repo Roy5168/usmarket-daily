@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -421,6 +425,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 <style>
 /* 網頁：工具列「歷史查詢」左側的 logo＋附註 */
@@ -537,7 +545,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">8/14（五）08:30ET 零售銷售（7月）MoM：預期+0.2%（前值+0.2%）；核心零售銷售（不含汽車）：預期+0.2%（前值-0.2%）</span><div class="note">為Warsh主席上任後首份完整消費支出讀數，市場將據此評估內需韌性</div></li>
 <li><span class="it">8/19（三）14:00ET FOMC會議紀錄公布（對應7/28-29會議）</span><div class="note">市場關注會中對通膨路徑與是否討論升息選項之措辭</div></li>
 <li><span class="it">8/27至8/29 Jackson Hole全球央行年會（懷俄明州）</span><div class="note">本屆主題聚焦金融創新對支付與政策之意涵</div></li>
@@ -609,7 +617,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 08/13/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">48bp，與前一交易日持平（08/12亦48bp）<div class="pn">一週前44bp、一個月前42bp，近一個月緩步走陡，惟最新交易日暫止步</div></td></tr><tr><td class="k">30Y–10Y利差</td><td class="tx">58bp，較前日+2bp（08/12為56bp）<div class="pn">一週前53bp、一個月前53bp，長天期利差略走陡，反映30年殖利率下行速度不及10年</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">81.25美元/桶，-2.02（-2.43%）；交易所結算價，前一交易日 08/12 為 83.27</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">87.07美元/桶，-1.91（-2.15%）；交易所結算價，前一交易日 08/12 為 88.98</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,420.40美元/盎司，-47.10（-1.05%）；交易所結算價，前一交易日 08/12 為 4,467.50</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.961，-0.040（-0.04%）；美東 16:00 匯率計算，前一交易日 08/12 為 100.001</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">PPI（7月）MoM</td><td class="tx">實際0.0%／預期+0.2%／前值-0.3%（6月）<div class="pn">連兩月不如預期，顯示批發端價格壓力持續降溫</div></td></tr><tr><td class="k">核心PPI（7月）MoM</td><td class="tx">實際+0.2%／預期+0.3%／前值+0.1%（6月）</td></tr><tr><td class="k">PPI（7月）YoY</td><td class="tx">實際+4.7%（核心+4.2%）</td></tr><tr><td class="k">初領失業救濟金人數（當週至8/8）</td><td class="tx">實際209千人／預期202千人／前值199千人（至8/1）<div class="pn">連續小幅回升，但仍處歷史相對低檔，尚未構成勞動市場明顯轉弱訊號</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td class="k">8/14（五）08:30ET 零售銷售（7月）MoM</td><td class="tx">預期+0.2%（前值+0.2%）；核心零售銷售（不含汽車）：預期+0.2%（前值-0.2%）<div class="pn">為Warsh主席上任後首份完整消費支出讀數，市場將據此評估內需韌性</div></td></tr><tr><td colspan="2" class="tx">8/19（三）14:00ET FOMC會議紀錄公布（對應7/28-29會議）<div class="pn">市場關注會中對通膨路徑與是否討論升息選項之措辭</div></td></tr><tr><td colspan="2" class="tx">8/27至8/29 Jackson Hole全球央行年會（懷俄明州）<div class="pn">本屆主題聚焦金融創新對支付與政策之意涵</div></td></tr><tr><td colspan="2" class="tx">8/28（五）上午（美東）Warsh主席於Jackson Hole發表就任以來首場重要演說<div class="pn">市場預期談話將涉及是否需要進一步緊縮以達成2%通膨目標</div></td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>8/14（五）08:30ET 零售銷售（7月）MoM：預期+0.2%（前值+0.2%）；核心零售銷售（不含汽車）：預期+0.2%（前值-0.2%）<div class="pn">為Warsh主席上任後首份完整消費支出讀數，市場將據此評估內需韌性</div></li><li>8/19（三）14:00ET FOMC會議紀錄公布（對應7/28-29會議）<div class="pn">市場關注會中對通膨路徑與是否討論升息選項之措辭</div></li><li>8/27至8/29 Jackson Hole全球央行年會（懷俄明州）<div class="pn">本屆主題聚焦金融創新對支付與政策之意涵</div></li><li>8/28（五）上午（美東）Warsh主席於Jackson Hole發表就任以來首場重要演說<div class="pn">市場預期談話將涉及是否需要進一步緊縮以達成2%通膨目標</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>9月16日FOMC會議：據CME FedWatch，截至美東8月13日（PPI公布後），市場定價升息機率降至35%以下，較一週前約55%明顯回落<div class="pn">8月12日盤中另一讀數顯示維持不變機率為50.3%；兩日PPI、CPI皆低於預期，緩解市場對Warsh主席鷹派升息路徑的疑慮，惟FedWatch屬即時滾動數據，僅供特定時點參考</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">站上4.70%</td><td>市場重新定價9月升息可能性</td></tr><tr><td>CME FedWatch 9月升息機率</td><td class="mk">重新站上50%</td><td>反映鷹派敘事回溫、PPI/CPI降溫效應消退</td></tr><tr><td>WTI原油</td><td class="mk">跌破78美元／桶</td><td>需求疑慮蓋過供給面因素，牽動通膨下行預期</td></tr><tr><td>DXY美元指數</td><td class="mk">站穩100以上</td><td>反映殖利率與避險需求同步支撐美元</td></tr><tr><td>VIX恐慌指數</td><td class="mk">反彈至18以上</td><td>顯示Jackson Hole央行年會前政策不確定性升溫</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>

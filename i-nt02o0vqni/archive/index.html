@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 .q{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0 4px}
 .q input{flex:1;min-width:200px;font-family:var(--mono);font-size:15px;
   color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);

@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -421,6 +425,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 <style>
 /* 網頁：工具列「歷史查詢」左側的 logo＋附註 */
@@ -533,7 +541,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">9月2日（三）美東08:15 ADP民間就業報告（8月）</span></li>
 <li><span class="it">9月3日（四）美東08:30 初領失業金人數（市場預期20.1萬，前值20.3萬）</span></li>
 <li><span class="it">9月3日（四）美東10:00 ISM非製造業（服務業）PMI（8月）</span></li>
@@ -604,7 +612,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/01/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">40bp（前日41bp，收窄1bp）<div class="pn">短端上升幅度大於長端，曲線呈現溫和「熊市趨平」，與升息預期升溫的走勢一致。</div></td></tr><tr><td class="k">30Y–10Y利差</td><td class="tx">48bp（前日50bp，收窄2bp）<div class="pn">長端相對抗跌，反映市場對通膨長期錨定尚未明顯鬆動。</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">90.22美元/桶，+4.46（+5.20%）；交易所結算價，前一交易日 08/31 為 85.76</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">94.65美元/桶，+4.16（+4.60%）；交易所結算價，前一交易日 08/31 為 90.49</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,396.40美元/盎司，-85.10（-1.90%）；交易所結算價，前一交易日 08/31 為 4,481.50</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.686，+0.262（+0.26%）；美東 16:00 匯率計算，前一交易日 08/31 為 99.424</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">ISM製造業PMI（8月）</td><td class="tx">實際54.6／市場預期55.2（共識約55.3）／前值55.6<div class="pn">連續第8個月處於擴張區間（50以上），但低於預期且較前值回落，新訂單與就業分項動能減弱，物價分項維持71.1高檔，顯示成本壓力未緩解。</div></td></tr><tr><td class="k">JOLTS職缺（7月）</td><td class="tx">實際710萬（更正後7.271百萬）／市場預期730萬／前值718萬<div class="pn">職缺數低於預期，勞動市場需求面出現降溫跡象，與物價分項偏高形成「類停滯性通膨」訊號組合，增添FOMC決策複雜度。</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">9月2日（三）美東08:15 ADP民間就業報告（8月）</td></tr><tr><td colspan="2" class="tx">9月3日（四）美東08:30 初領失業金人數（市場預期20.1萬，前值20.3萬）</td></tr><tr><td colspan="2" class="tx">9月3日（四）美東10:00 ISM非製造業（服務業）PMI（8月）</td></tr><tr><td colspan="2" class="tx">9月4日（五）美東08:30 非農就業報告與失業率（8月）</td></tr><tr><td colspan="2" class="tx">9月15–16日（二至三）FOMC會議，9月16日美東14:00政策聲明、14:30 Fed主席Warsh記者會</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>9月2日（三）美東08:15 ADP民間就業報告（8月）</li><li>9月3日（四）美東08:30 初領失業金人數（市場預期20.1萬，前值20.3萬）</li><li>9月3日（四）美東10:00 ISM非製造業（服務業）PMI（8月）</li><li>9月4日（五）美東08:30 非農就業報告與失業率（8月）</li><li>9月15–16日（二至三）FOMC會議，9月16日美東14:00政策聲明、14:30 Fed主席Warsh記者會</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>9月16日FOMC升息25bp（至3.75%–4.00%）機率：60.4%（CME FedWatch，截至美東時間9月1日）<div class="pn">較8月28日Jackson Hole會後57%、8月31日盤中一度衝高至66%略有回落，但仍遠高於8月上旬近乎零的升息預期。機率波動反映市場對Warsh鷹派表態（強調2%通膨目標「堅定不移」）與後續就業數據之間的拉鋸，本週ADP、ISM服務業與非農數據將是機率能否進一步鞏固的關鍵。</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>Brent原油</td><td class="mk">站穩95美元/桶以上</td><td>能源分項可能推升短期通膨預期，強化升息論述</td></tr><tr><td>10年期公債殖利率</td><td class="mk">站上4.85%</td><td>顯示市場進一步為升息路徑重新定價</td></tr><tr><td>9月4日非農就業</td><td class="mk">若職缺與新增就業同步走弱</td><td>與當前升息機率形成矛盾訊號，增加FOMC決策不確定性</td></tr><tr><td>VIX</td><td class="mk">站上20</td><td>顯示避險需求由局部題材轉向系統性風險定價</td></tr><tr><td>2s10s利差</td><td class="mk">由正轉負（倒掛）</td><td>顯示債市對經濟前景疑慮升溫，與短端升息定價形成拉鋸</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>

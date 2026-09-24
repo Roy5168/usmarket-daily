@@ -293,6 +293,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -420,6 +424,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 </head>
 <body data-report-date="2026-08-26">
@@ -505,7 +513,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">8/26（三）美東08:30 — 7月核心PCE物價指數、7月個人所得與支出、第二季GDP修正值、7月耐久財訂單初值</span><div class="note">為本週最重要總經數據集中發布時點，PCE走勢將直接影響9月FOMC升降息路徑定價。</div></li>
 <li><span class="it">8/26（三）美東盤後17:00法說 — NVIDIA公布2027財年第二季（截至7/27）財報</span><div class="note">AI相關類股近期評價敏感度高，財測用語為市場關注焦點。</div></li>
 <li><span class="it">8/27-29（四至六）— Jackson Hole經濟政策研討會，主題「金融創新：對支付與政策之意涵」</span></li>
@@ -578,7 +586,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 08/25/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">利差2s10s</td><td class="tx">47bp（4.64%-4.17%），較前一交易日46bp走陡+1bp</td></tr><tr><td class="k">利差30Y-10Y</td><td class="tx">53bp，與前一交易日53bp持平<div class="pn">短天期降幅略大於長天期，曲線溫和趨陡；較一週前52bp小幅收斂，但較一個月前34bp明顯走陡，顯示過去一個月市場對政策路徑重新定價。</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">82.36美元/桶，-2.65（-3.12%）；交易所結算價，前一交易日 08/24 為 85.01</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">88.58美元/桶，-3.59（-3.89%）；交易所結算價，前一交易日 08/24 為 92.17</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,694.50美元/盎司，-3.30（-0.07%）；交易所結算價，前一交易日 08/24 為 4,697.80</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">98.884，-0.132（-0.13%）；美東 16:00 匯率計算，前一交易日 08/24 為 99.016</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">8月諮商會消費者信心指數</td><td class="tx">實際89.4／市場預期90.2／前值90.2（7月，向下修正）<div class="pn">現況指數大增6.8點至121.2，預期指數卻重挫5.8點至68.2，降至七個月低點；顯示消費者對當下勞動市場觀感轉佳，但對未來六個月所得與就業前景轉趨悲觀，與勞動市場降溫、物價壓力並存的訊號相符。</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">8/26（三）美東08:30 — 7月核心PCE物價指數、7月個人所得與支出、第二季GDP修正值、7月耐久財訂單初值<div class="pn">為本週最重要總經數據集中發布時點，PCE走勢將直接影響9月FOMC升降息路徑定價。</div></td></tr><tr><td colspan="2" class="tx">8/26（三）美東盤後17:00法說 — NVIDIA公布2027財年第二季（截至7/27）財報<div class="pn">AI相關類股近期評價敏感度高，財測用語為市場關注焦點。</div></td></tr><tr><td colspan="2" class="tx">8/27-29（四至六）— Jackson Hole經濟政策研討會，主題「金融創新：對支付與政策之意涵」</td></tr><tr><td colspan="2" class="tx">8/28（五）— Fed主席Warsh於Jackson Hole發表就任後首次公開演說<div class="pn">市場關注其談話是否延續7月「物價仍過高」的鷹派表態。</div></td></tr><tr><td colspan="2" class="tx">9/15-16 — 9月FOMC會議，9/16美東14:00公布利率決議與經濟預測摘要(SEP)</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>8/26（三）美東08:30 — 7月核心PCE物價指數、7月個人所得與支出、第二季GDP修正值、7月耐久財訂單初值<div class="pn">為本週最重要總經數據集中發布時點，PCE走勢將直接影響9月FOMC升降息路徑定價。</div></li><li>8/26（三）美東盤後17:00法說 — NVIDIA公布2027財年第二季（截至7/27）財報<div class="pn">AI相關類股近期評價敏感度高，財測用語為市場關注焦點。</div></li><li>8/27-29（四至六）— Jackson Hole經濟政策研討會，主題「金融創新：對支付與政策之意涵」</li><li>8/28（五）— Fed主席Warsh於Jackson Hole發表就任後首次公開演說<div class="pn">市場關注其談話是否延續7月「物價仍過高」的鷹派表態。</div></li><li>9/15-16 — 9月FOMC會議，9/16美東14:00公布利率決議與經濟預測摘要(SEP)</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>9月FOMC會議：維持利率不變機率約68.4%／升息1碼機率約31.6%（CME FedWatch，截至美東時間8/20 16:00）<div class="pn">較7月底一度高達81%的升息機率大幅回落；8/7公布7月非農數據疲弱後升息押注急遽降溫，近兩週穩定在「六成多維持、三成多升息」區間。市場目前並未對9月降息定價，反映Warsh鷹派立場與勞動市場走弱之間的角力。</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>7月核心PCE物價指數(8/26公布)</td><td class="mk">年增率高於前值</td><td>強化9月升息機率、美元與殖利率同步上揚風險</td></tr><tr><td>NVIDIA財報(8/26盤後)</td><td class="mk">財測不如預期</td><td>觸發AI相關類股評價修正並牽動那斯達克波動</td></tr><tr><td>Warsh於Jackson Hole演說(8/28)</td><td class="mk">措辭偏向強調通膨韌性</td><td>市場重新定價9月升息機率上行</td></tr><tr><td>10年期公債殖利率</td><td class="mk">站上4.75%</td><td>顯示市場對緊縮路徑重新定價</td></tr><tr><td>WTI原油</td><td class="mk">跌破80美元/桶</td><td>反映地緣風險溢酬進一步消退、通膨預期下修</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>

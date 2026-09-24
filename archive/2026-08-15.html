@@ -293,6 +293,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -420,6 +424,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 </head>
 <body data-report-date="2026-08-15">
@@ -506,7 +514,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">08/19（三）14:00 FOMC 7月會議記錄（Minutes）公布</span></li>
 <li><span class="it">08/20（四）20:30 初次申請失業救濟金人數；費城聯準銀行製造業指數</span></li>
 <li><span class="it">08/21（五）Jackson Hole全球央行年會開幕（至08/23）；S&amp;P Global製造業／服務業PMI初值；成屋銷售</span></li>
@@ -579,7 +587,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 08/14/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">51bp，較前一交易日48bp走升+3bp<div class="pn">短中端利差走陡，反映市場對近端政策不確定性（升息選項未退出）疊加長天期通膨溢酬同步上升</div></td></tr><tr><td class="k">30Y–10Y利差</td><td class="tx">57bp，較前一交易日58bp收斂-1bp，長端曲線近乎持平、略為趨平</td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">82.40美元/桶，+1.15（+1.42%）；交易所結算價，前一交易日 08/13 為 81.25</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">88.52美元/桶，+1.45（+1.67%）；交易所結算價，前一交易日 08/13 為 87.07</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,437.30美元/盎司，+16.90（+0.38%）；交易所結算價，前一交易日 08/13 為 4,420.40</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.649，-0.312（-0.31%）；美東 16:00 匯率計算，前一交易日 08/13 為 99.961</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">密大消費者信心指數（8月初值）</td><td class="tx">51.0／市場預期54.5／前值（7月終值）55.2<div class="pn">大幅遜於預期且較前值重挫7.6%，其中未來預期分項降至50.6、當前狀況分項降至51.8，一年期通膨預期由4.2%升至4.3%，顯示消費者對物價與景氣雙重擔憂加深</div></td></tr><tr><td class="k">零售銷售（7月）</td><td class="tx">月增-0.6%／市場預期+0.4%／前值（6月）+0.2%；年增5.0%<div class="pn">月增由正轉負且遠不及預期，年增率則自5月7.3%、6月6.7%持續降溫，顯示消費動能較上半年明顯放緩</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">08/19（三）14:00 FOMC 7月會議記錄（Minutes）公布</td></tr><tr><td colspan="2" class="tx">08/20（四）20:30 初次申請失業救濟金人數；費城聯準銀行製造業指數</td></tr><tr><td colspan="2" class="tx">08/21（五）Jackson Hole全球央行年會開幕（至08/23）；S&amp;P Global製造業／服務業PMI初值；成屋銷售</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>08/19（三）14:00 FOMC 7月會議記錄（Minutes）公布</li><li>08/20（四）20:30 初次申請失業救濟金人數；費城聯準銀行製造業指數</li><li>08/21（五）Jackson Hole全球央行年會開幕（至08/23）；S&amp;P Global製造業／服務業PMI初值；成屋銷售</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>上次會議（2026-07-28~29）：維持利率3.50%–3.75%不變，三位理事投票支持升息，屬罕見鷹派分歧</li><li>下次會議：2026-09-16</li><li>CME FedWatch：截至美東08/12下午，維持不變機率50.3%、隱含升息機率約49.7%（較7月FOMC後一度高達六成的升息押注已明顯滑落）<div class="pn">08/12～08/14公布之CPI（年增3.4%，符合預期）、零售銷售（遜於預期）、密大消費信心（遠低於預期）三項數據均偏鴿，同期金價一度單週漲7.6%、美元指數連兩日走弱，顯示市場對9月升息的定價持續降溫；惟通膨仍在3%以上且新任主席Warsh立場偏鷹，升息選項尚未完全退出市場定價，確切逐日機率因資料而波動，建議以CME官網即時數據為準</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">站上4.75%</td><td>市場重新定價升息路徑機率</td></tr><tr><td>CME FedWatch 9月升息機率</td><td class="mk">站回60%以上</td><td>市場定價由「多空拉鋸」轉向「傾向緊縮」</td></tr><tr><td>DXY美元指數</td><td class="mk">跌破99</td><td>反映降息／停止升息預期主導，美元弱勢格局延續</td></tr><tr><td>WTI原油</td><td class="mk">站上85美元</td><td>能源通膨壓力升溫，增添鷹派升息理據</td></tr><tr><td>Jackson Hole年會（08/21–23）Warsh談話</td><td class="mk">釋出明確前瞻指引</td><td>市場對9月決議不確定性下降</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>

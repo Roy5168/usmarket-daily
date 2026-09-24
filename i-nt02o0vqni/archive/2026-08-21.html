@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -421,6 +425,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 <style>
 /* 網頁：工具列「歷史查詢」左側的 logo＋附註 */
@@ -535,7 +543,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">2026-08-26(三)08:30 美東:7月PCE及核心PCE物價指數、7月個人所得與支出、Q2 GDP第二次估值、7月耐久財訂單</span></li>
 <li><span class="it">2026-08-26(三)盤後:輝達(NVDA)公布2027財年Q2財報(對應日曆07月止季度)</span></li>
 <li><span class="it">2026-08-27~29 堪薩斯城聯準銀行Jackson Hole經濟政策研討會(主題:金融創新對支付與政策之影響)</span></li>
@@ -605,7 +613,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 08/20/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td colspan="2" class="tx">2s10s利差:50bp(10Y 4.69% - 2Y 4.19%),與前一交易日(46bp)相比走陡+4bp</td></tr><tr><td colspan="2" class="tx">30Y–10Y利差:54bp,與前一交易日(54bp)持平<div class="pn">長端殖利率同步上行、短端持平,曲線呈現「熊陡」(bear steepening)特徵,反映市場對長天期通膨與財政供給溢酬的疑慮重於對Fed近端降息路徑的定價。</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">86.83美元/桶，+2.44（+2.89%）；交易所結算價，前一交易日 08/19 為 84.39</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">93.78美元/桶，+2.16（+2.36%）；交易所結算價，前一交易日 08/19 為 91.62</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,571.40美元/盎司，+26.10（+0.57%）；交易所結算價，前一交易日 08/19 為 4,545.30</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">98.884，+0.087（+0.09%）；美東 16:00 匯率計算，前一交易日 08/19 為 98.797</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">初次申請失業金(當週至08/15):20.6萬人／市場預期21.0萬人／前值(略修正)約21.2萬人<div class="pn">續連數週維持低檔,顯示勞動市場尚未明顯惡化。</div></td></tr><tr><td colspan="2" class="tx">續請失業金(當週至08/01):183萬人</td></tr><tr><td class="k">費城聯準銀行製造業指數(08月)</td><td class="tx">實際值47.4／市場預期25.0／前值41.4<div class="pn">大幅優於預期並創五年新高,與近期部分疲軟的消費端數據(如Walmart財報)形成對比，顯示製造業與消費端呈現分歧走勢。</div></td></tr><tr><td colspan="2" class="tx">成屋銷售(07月,經季調年化):406萬戶,月減1.7%／前值(06月)較高<div class="pn">中位數成屋價格年增2.0%至43.41萬美元,已連續37個月上漲;NAR首席經濟學家Yun形容市場「在偏高房貸利率環境下維持相對穩定」。</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">2026-08-26(三)08:30 美東:7月PCE及核心PCE物價指數、7月個人所得與支出、Q2 GDP第二次估值、7月耐久財訂單</td></tr><tr><td class="k">2026-08-26(三)盤後</td><td class="tx">輝達(NVDA)公布2027財年Q2財報(對應日曆07月止季度)</td></tr><tr><td colspan="2" class="tx">2026-08-27~29 堪薩斯城聯準銀行Jackson Hole經濟政策研討會(主題:金融創新對支付與政策之影響)</td></tr><tr><td class="k">2026-08-28(五)上午 美東</td><td class="tx">Fed主席Warsh於Jackson Hole發表就任以來首次年會主題演講</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>2026-08-26(三)08:30 美東:7月PCE及核心PCE物價指數、7月個人所得與支出、Q2 GDP第二次估值、7月耐久財訂單</li><li>2026-08-26(三)盤後:輝達(NVDA)公布2027財年Q2財報(對應日曆07月止季度)</li><li>2026-08-27~29 堪薩斯城聯準銀行Jackson Hole經濟政策研討會(主題:金融創新對支付與政策之影響)</li><li>2026-08-28(五)上午 美東:Fed主席Warsh於Jackson Hole發表就任以來首次年會主題演講</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>9月16日FOMC利率決策機率(截至美東時間08/20 18:25):維持3.75%-4.00%機率35.3%;調降至3.50%-3.75%機率64.7%(來源:Investing.com Fed Rate Monitor,依CME 30天期Fed Funds期貨定價,期貨價96.325)<div class="pn">市場仍以降息一碼為基準情境,惟08/20當日長端殖利率回升、財政部買回操作效果消退,顯示降息定價尚未進一步深化;確切較前一交易日的機率變動因單一數據源未能交叉驗證,故不另行標注bp變化。</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">站上4.75%</td><td>市場可能重新評估財政供給壓力對長端利率的持續性影響 30年期公債殖利率　重新測試5.34%前高　顯示財政部買回操作對抑制長端利率的效果是否徹底失效 DXY美元指數　跌破98.5　觀察殖利率與美元背離現象是否持續、市場是否進一步質疑美元資產吸引力 WTI原油　站上90美元/桶　觀察伊朗地緣政治風險是否開始反映在通膨預期與Fed決策考量中 PCE核心物價年增率(08/26公布)　較前值(6月)是否加速　影響9月FOMC會前市場對降息機率的最後定價</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>

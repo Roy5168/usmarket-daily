@@ -293,6 +293,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -420,6 +424,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 </head>
 <body data-report-date="2026-09-18">
@@ -508,7 +516,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">09/23(三)美東約09:45:9月S&amp;P Global製造業/服務業PMI初值</span></li>
 <li><span class="it">09/25(五)美東08:30:當週首次請領失業救濟金人數</span></li>
 <li><span class="it">09/26(六,台北時間)美東08:30:8月PCE物價指數(核心PCE年增率)</span></li>
@@ -584,7 +592,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/17/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td colspan="2" class="tx">利差 2s10s:27bp(前一交易日27bp,持平);30Y-10Y利差:35bp(前一交易日34bp,+1bp)<div class="pn">短中長端殖利率同步下修、降幅相近,曲線形狀大致持平;惟拉長至一個月期間,2s10s利差由52bp收斂至27bp,顯示過去一個月曲線明顯趨平</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">102.03美元/桶，-0.38（-0.37%）；美東 14:30 結算時點，前一交易日 09/16 為 102.41<div class="pn">沙烏地阿拉伯東西輸油管修復進度快於預期、部分產能可望提前恢復,加上美國原油庫存降幅不如市場預期,共同壓抑價格</div></td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">104.91美元/桶，-0.88（-0.83%）；倫敦 19:30 結算時點，前一交易日 09/16 為 105.79<div class="pn">中東供應中斷疑慮降溫為主要壓抑因素,惟市場仍對區域情勢升溫保持敏感</div></td></tr><tr><td class="k">黃金（COMEX近月期貨）</td><td class="tx">4,400.20美元/盎司，+12.00（+0.27%）；美東 13:30 結算時點，前一交易日 09/16 為 4,388.20<div class="pn">聯準會升息後公債殖利率回落,加上油價走軟緩解通膨疑慮,黃金回補前一交易日部分跌幅</div></td></tr><tr><td class="k">美元指數DXY</td><td class="tx">100.214，-0.040（-0.04%）；美東 16:00（美股收盤時點），前一交易日 09/16 為 100.254<div class="pn">升息落地後殖利率同步走低,美元指數波動收斂,走勢大致持平</div></td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">9月費城聯準銀行製造業指數</td><td class="tx">實際值+37.8,市場預期+30.5,前值+47.4<div class="pn">實際值優於預期但較前月明顯回落,顯示區域製造業擴張動能降溫,惟仍處擴張區間(高於0)</div></td></tr><tr><td class="k">當週首次請領失業救濟金人數(至09/12當週)</td><td class="tx">實際19.6萬人,市場預期20.7萬人,前值20.6萬人<div class="pn">實際值遠低於預期與前值,顯示勞動市場尚未出現明顯降溫跡象,與聯準會近期升息立場所依據的「勞動市場強勁」判斷相符</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">09/23(三)美東約09:45:9月S&amp;P Global製造業/服務業PMI初值</td></tr><tr><td colspan="2" class="tx">09/25(五)美東08:30:當週首次請領失業救濟金人數</td></tr><tr><td colspan="2" class="tx">09/26(六,台北時間)美東08:30:8月PCE物價指數(核心PCE年增率)</td></tr><tr><td colspan="2" class="tx">10/28(三)美東14:00:FOMC利率決議聲明(現行目標區間375-400bp);14:30:Fed主席Warsh記者會</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>09/23(三)美東約09:45:9月S&amp;P Global製造業/服務業PMI初值</li><li>09/25(五)美東08:30:當週首次請領失業救濟金人數</li><li>09/26(六,台北時間)美東08:30:8月PCE物價指數(核心PCE年增率)</li><li>10/28(三)美東14:00:FOMC利率決議聲明(現行目標區間375-400bp);14:30:Fed主席Warsh記者會</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><div class="pfed"><div class="pbar"><span class="b2" style="flex:44.6"></span><span class="b1" style="flex:55.4"></span></div><div><b>維持不變 44.6%、升息25bp 55.4%</b>　<span class="m">CME FedWatch｜2026-10-28 FOMC｜資料時間 17 Sep 2026 05:32:25 CT</span></div></div><ul class="pl"><li>最近一次FOMC(2026-10-28,現行目標區間375-400bp)</li><li>維持不變(375-400bp):44.6%</li><li>升息25bp(400-425bp):55.4% 資料時間:2026年9月17日05:32:25(CT),CME官方頁面標示<div class="pn">9月16日FOMC已升息25bp至375-400bp,為2023年以來首次升息,主席Warsh於記者會表示通膨「過高過久」,並稱尚未確信通膨正以足夠速度回向目標;會後公布之經濟預測摘要顯示18位與會官員中有16位預期年內可能再升息一次。CME機率顯示10月再升息25bp機率(55.4%)略高於維持不變(44.6%),方向與上述官員預測分佈一致</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">若重新站上5.00%</td><td>顯示市場對再次升息路徑重新升溫定價</td></tr><tr><td>CME FedWatch 10月再升息機率</td><td class="mk">若升破60%</td><td>反映市場對連續兩次升息之預期強化</td></tr><tr><td>Brent原油</td><td class="mk">若跌破100美元/桶</td><td>反映中東供應疑慮進一步降溫、通膨壓力舒緩</td></tr><tr><td>VIX恐慌指數</td><td class="mk">若重回20以上</td><td>顯示市場波動與風險規避情緒明顯升高</td></tr><tr><td>費城半導體指數</td><td class="mk">若跌破11,000點</td><td>顯示AI硬體題材類股動能出現降溫跡象</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-18 14:11</span></footer>

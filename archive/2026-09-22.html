@@ -293,6 +293,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -420,6 +424,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 </head>
 <body data-report-date="2026-09-22">
@@ -509,7 +517,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">9/23（三）09:45：S&amp;P Global 製造業／服務業 PMI 初值</span></li>
 <li><span class="it">9/23（三）：Meta Connect（AI 智慧眼鏡）</span></li>
 <li><span class="it">9/23–25：中國官方確認 習近平訪美；9/24（四）川習國宴，預計有 Huang、Altman 等 AI 業者出席</span></li>
@@ -589,7 +597,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/21/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s 利差</td><td class="tx">+20bp（前一交易日 +25bp，-5bp）<div class="pn">利差收斂、曲線趨平：2年期持平、10年期下行。</div></td></tr><tr><td class="k">30Y–10Y 利差</td><td class="tx">+33bp（前一交易日 +33bp，+0bp）<div class="pn">長端兩檔同步下行，期限溢酬結構無變化。</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">92.36美元/桶，-3.68（-3.83%）；美東 14:30 結算時點，前一交易日 09/18 為 96.04</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">96.24美元/桶，-3.08（-3.10%）；倫敦 19:30 結算時點，前一交易日 09/18 為 99.32<div class="pn">媒體歸因：川普報導稱暫不轟炸葉門、並表態願與伊朗對話，市場降低供給中斷疑慮。</div></td></tr><tr><td class="k">黃金（COMEX近月期貨）</td><td class="tx">4,384.40美元/盎司，-40.90（-0.92%）；美東 13:30 結算時點，前一交易日 09/18 為 4,425.30</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">100.428，+0.225（+0.22%）；美東 16:00（美股收盤時點），前一交易日 09/18 為 100.203<div class="pn">股市盤面：Bloomberg 報導 Meta 新 AI 代理「Muse」初期成效帶動伺服器 CPU 與晶片股上漲；中美國宴在即與 Bessent 表示對中談判順利，亦支撐 AI 類股情緒。</div></td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">昨日（9/21）無經第一手查證之重要美國經濟數據；最近一筆為 9/17 公布之初請失業金人數（週次 9/12）：19.6萬人／市場預期 20.8萬人／前值 20.6萬人<div class="pn">低於預期，四週均值 20.325 萬人，勞動市場裁員仍低。</div></td></tr><tr><td class="k">Fed 官員談話</td><td class="tx">St. Louis Fed 總裁 Musalem（9/21，Bloomberg）表示可能仍需進一步升息，且政策可能仍具刺激性<div class="pn">與 9/16 FOMC 點陣圖（中位數顯示 2026 年底前再升息 1 碼）方向一致。</div></td></tr><tr><td class="k">9/16 FOMC</td><td class="tx">一致（12 比 0）決議升息 1 碼至 3.75%–4.00%，為 2023 年以來首度升息；主席 Warsh 記者會稱「通膨過高且已過久」<div class="pn">政策聲明為美東 14:00，記者會為 14:30。</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td class="k">9/23（三）09:45</td><td class="tx">S&amp;P Global 製造業／服務業 PMI 初值</td></tr><tr><td class="k">9/23（三）</td><td class="tx">Meta Connect（AI 智慧眼鏡）</td></tr><tr><td class="k">9/23–25</td><td class="tx">中國官方確認 習近平訪美；9/24（四）川習國宴，預計有 Huang、Altman 等 AI 業者出席</td></tr><tr><td class="k">9/24（四）08:30</td><td class="tx">初請失業金人數；10:00：新屋銷售</td></tr><tr><td class="k">9/24（四）</td><td class="tx">Costco 2026 會計年度第4季財報（盤後）；市場預期營收約 948.5 億美元、調整後 EPS 6.55 美元</td></tr><tr><td class="k">9/24（四）</td><td class="tx">Darden Restaurants 財報（盤前）</td></tr><tr><td class="k">9/25（五）08:30</td><td class="tx">耐久財訂單；10:00：密大消費者信心終值</td></tr><tr><td class="k">10/28</td><td class="tx">FOMC 會議（聲明 14:00、Warsh 記者會 14:30）<div class="pn">8 月 PCE 公布日期各來源不一，待確認，故未列入。</div></td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>9/23（三）09:45：S&amp;P Global 製造業／服務業 PMI 初值</li><li>9/23（三）：Meta Connect（AI 智慧眼鏡）</li><li>9/23–25：中國官方確認 習近平訪美；9/24（四）川習國宴，預計有 Huang、Altman 等 AI 業者出席</li><li>9/24（四）08:30：初請失業金人數；10:00：新屋銷售</li><li>9/24（四）：Costco 2026 會計年度第4季財報（盤後）；市場預期營收約 948.5 億美元、調整後 EPS 6.55 美元</li><li>9/24（四）：Darden Restaurants 財報（盤前）</li><li>9/25（五）08:30：耐久財訂單；10:00：密大消費者信心終值</li><li>10/28：FOMC 會議（聲明 14:00、Warsh 記者會 14:30）<div class="pn">8 月 PCE 公布日期各來源不一，待確認，故未列入。</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><div class="pfed"><div class="pbar"><span class="b2" style="flex:43.5"></span><span class="b1" style="flex:56.5"></span></div><div><b>維持不變 43.5%、升息25bp 56.5%</b>　<span class="m">CME FedWatch｜2026-10-28 FOMC｜資料時間 21 Sep 2026 05:33:00 CT</span></div></div><ul class="pl"><li>維持不變（375–400bp）：43.5%</li><li>升息25bp（400–425bp）：56.5%</li><li>降息：頁面未列出機率<div class="pn">因取不到同一時點的前次讀數，無法比較變化方向；此讀數在美股開盤前，未反映當日 Musalem 談話與殖利率回落。</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10Y 殖利率</td><td class="mk">重回 5.00% 以上</td><td>長端利率壓力再起</td></tr><tr><td>2Y 殖利率</td><td class="mk">站上 4.85%</td><td>市場加強定價 10 月升息</td></tr><tr><td>CME 10 月升息機率</td><td class="mk">突破 70%</td><td>升息路徑定價明顯轉強</td></tr><tr><td>VIX</td><td class="mk">站上 20</td><td>風險偏好轉弱、股市波動升高</td></tr><tr><td>WTI</td><td class="mk">重回 100 美元</td><td>能源價格再度推升通膨壓力</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-22 06:48</span></footer>

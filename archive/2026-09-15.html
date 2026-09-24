@@ -293,6 +293,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -420,6 +424,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 </head>
 <body data-report-date="2026-09-15">
@@ -508,7 +516,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">2026-09-16（三）美東08:30：8月零售銷售（Advance Retail Sales）</span></li>
 <li><span class="it">2026-09-16（三）美東14:00：FOMC利率決議（現行目標區間350-375bp）</span></li>
 <li><span class="it">2026-09-16（三）美東14:30：Fed主席Warsh記者會</span></li>
@@ -588,7 +596,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/14/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">32bp（前一交易日33bp，-1bp）<div class="pn">過去一週由41bp收斂至32bp（-9bp），前端殖利率因升息預期升溫、漲幅明顯大於長端，殖利率曲線呈現趨平走勢</div></td></tr><tr><td class="k">30Y–10Y利差</td><td class="tx">37bp（前一交易日39bp，-2bp）<div class="pn">長端同步趨平，反映市場對明日FOMC升息決議之定價已大致到位</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">101.39美元/桶，+1.34（+1.34%）；交易所結算價，前一交易日 09/11 為 100.05</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">105.68美元/桶，+1.07（+1.02%）；交易所結算價，前一交易日 09/11 為 104.61</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,351.90美元/盎司，-57.00（-1.29%）；交易所結算價，前一交易日 09/11 為 4,408.90</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.491，+0.373（+0.38%）；美東 16:00 匯率計算，前一交易日 09/11 為 99.118</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">8月CPI（2026-09-11公布）</td><td class="tx">季調月增0.4%／年增3.4%<div class="pn">整體通膨略高於前月，強化Fed升息論述</div></td></tr><tr><td class="k">8月核心CPI</td><td class="tx">月增0.3%（市場預期0.2%）／年增2.4%（市場預期2.4%，前值2.5%）<div class="pn">核心月增優於預期，年增雖續降但月度動能轉強，是CME機率於CPI公布後由約6成快速上修至9成以上升息預期的主要觸發點</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td class="k">2026-09-16（三）美東08:30</td><td class="tx">8月零售銷售（Advance Retail Sales）</td></tr><tr><td class="k">2026-09-16（三）美東14:00</td><td class="tx">FOMC利率決議（現行目標區間350-375bp）</td></tr><tr><td class="k">2026-09-16（三）美東14:30</td><td class="tx">Fed主席Warsh記者會</td></tr><tr><td class="k">2026-09-17（四）美東08:30</td><td class="tx">當週初領失業金人數、9月費城聯準Fed製造業指數、新屋開工</td></tr><tr><td class="k">2026-09-18（五）美東09:15</td><td class="tx">8月工業生產與產能利用率</td></tr><tr><td class="k">2026-09-23（三）</td><td class="tx">9月S&amp;P Global製造業/服務業PMI初值、Richmond Fed製造業指數</td></tr><tr><td class="k">2026-09-24（四）</td><td class="tx">8月新屋銷售</td></tr><tr><td class="k">2026-09-25（五）</td><td class="tx">當週初領失業金人數、8月耐久財訂單、2026Q2 GDP終值、8月成屋銷售</td></tr><tr><td class="k">2026-09-26（六）美東前</td><td class="tx">8月PCE物價指數、9月密西根大學消費者信心終值</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>2026-09-16（三）美東08:30：8月零售銷售（Advance Retail Sales）</li><li>2026-09-16（三）美東14:00：FOMC利率決議（現行目標區間350-375bp）</li><li>2026-09-16（三）美東14:30：Fed主席Warsh記者會</li><li>2026-09-17（四）美東08:30：當週初領失業金人數、9月費城聯準Fed製造業指數、新屋開工</li><li>2026-09-18（五）美東09:15：8月工業生產與產能利用率</li><li>2026-09-23（三）：9月S&amp;P Global製造業/服務業PMI初值、Richmond Fed製造業指數</li><li>2026-09-24（四）：8月新屋銷售</li><li>2026-09-25（五）：當週初領失業金人數、8月耐久財訂單、2026Q2 GDP終值、8月成屋銷售</li><li>2026-09-26（六）美東前：8月PCE物價指數、9月密西根大學消費者信心終值</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><div class="pfed"><div class="pbar"><span class="b2" style="flex:7.6"></span><span class="b1" style="flex:92.4"></span></div><div><b>維持不變 7.6%、升息25bp 92.4%</b>　<span class="m">CME FedWatch｜2026-09-16 FOMC｜資料時間 14 Sep 2026 06:26:40 CT</span></div></div><ul class="pl"><li>維持不變（350-375bp）：7.6%</li><li>升息25bp（375-400bp）：92.4%<div class="pn">資料時間：2026-09-14 06:26 CT（CME FedWatch官方頁面）。相較8月Jackson Hole會後（約60%附近）已大幅上修，8月核心CPI月增優於預期為近期關鍵推手，市場目前對本週三升息已幾近完全定價</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">站上5.00%</td><td>市場對升息路徑或期限溢酬重新定價</td></tr><tr><td>SOX費城半導體指數</td><td class="mk">跌破11,000點</td><td>AI資本支出降溫疑慮進一步擴散至類股</td></tr><tr><td>Brent原油</td><td class="mk">站穩110美元/桶以上</td><td>供給面風險溢酬對通膨預期形成更明確壓力</td></tr><tr><td>CME FedWatch升息機率</td><td class="mk">回落至80%以下</td><td>市場對週三決議結果之共識出現分歧</td></tr><tr><td>DXY美元指數</td><td class="mk">站上100</td><td>反映市場對Fed緊縮路徑及避險需求的重新定價</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-15 07:43</span></footer>

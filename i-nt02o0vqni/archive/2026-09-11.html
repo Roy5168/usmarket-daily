@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -421,6 +425,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 <style>
 /* 網頁：工具列「歷史查詢」左側的 logo＋附註 */
@@ -535,7 +543,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">2026-09-11（週五）美東08:30：8月CPI公布</span></li>
 <li><span class="it">2026-09-16（週三）美東14:00：FOMC利率決議；14:30 Fed主席Warsh記者會（9/15–16兩日會議，本次含經濟預測摘要SEP與利率點陣圖）</span></li>
 </ul>
@@ -605,7 +613,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 09/10/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">39bp，較前一交易日40bp收窄1bp<div class="pn">一個月前48bp，近一個月收窄9bp；因2Y漲幅（＋34bp）大於10Y（＋25bp），屬熊市趨平（bear flattening）</div></td></tr><tr><td class="k">30Y－10Y利差</td><td class="tx">42bp，較前一交易日45bp收窄3bp<div class="pn">一個月前54bp，長端亦同步趨平，反映殖利率全面走高但曲線壓縮</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">102.48美元/桶，+6.43（+6.69%）；交易所結算價，前一交易日 09/09 為 96.05</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">107.63美元/桶，+6.42（+6.34%）；交易所結算價，前一交易日 09/09 為 101.21</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,407.30美元/盎司，-53.40（-1.20%）；交易所結算價，前一交易日 09/09 為 4,460.70</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.075，+0.262（+0.26%）；美東 16:00 匯率計算，前一交易日 09/09 為 98.813</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">8月PPI年增率</td><td class="tx">5.4%／預期5.3%／前值5.3%<div class="pn">高於預期，核心PPI年增亦升至4.6%，強化通膨黏著疑慮，為推升殖利率與升息預期的主因</div></td></tr><tr><td class="k">當週初領失業金人數</td><td class="tx">20.6萬人／預期20.5萬人／前值20.7萬人（截至9月5日當週）<div class="pn">落在預期區間，勞動市場尚未明顯轉弱，未對Fed決策形成反向牽制</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td class="k">2026-09-11（週五）美東08:30</td><td class="tx">8月CPI公布</td></tr><tr><td class="k">2026-09-16（週三）美東14:00</td><td class="tx">FOMC利率決議；14:30 Fed主席Warsh記者會（9/15–16兩日會議，本次含經濟預測摘要SEP與利率點陣圖）</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>2026-09-11（週五）美東08:30：8月CPI公布</li><li>2026-09-16（週三）美東14:00：FOMC利率決議；14:30 Fed主席Warsh記者會（9/15–16兩日會議，本次含經濟預測摘要SEP與利率點陣圖）</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>CME FedWatch：9月16日會議升息25bp機率近70%，維持不變機率約30%，無降息定價<div class="pn">截至美東時間9月10日；較8月底約56–66%區間進一步上升，受8月PPI意外走高、美伊衝突推升油價、Fed官員鷹派表態共同推動</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>8月CPI年增率</td><td class="mk">站上或跌破3.4%</td><td>影響9月16日FOMC升息機率是否進一步鞏固</td></tr><tr><td>10年期公債殖利率</td><td class="mk">站穩5.00%以上</td><td>市場對長端通膨溢酬重新定價</td></tr><tr><td>Brent原油</td><td class="mk">站上105美元/桶</td><td>供應中斷疑慮實質衝擊通膨預期而非僅地緣風險溢價</td></tr><tr><td>2s10s利差</td><td class="mk">轉為負值（倒掛）</td><td>市場開始定價升息循環後的成長放緩風險</td></tr><tr><td>VIX</td><td class="mk">站上20</td><td>波動率建制轉變，反映風險資產對地緣與利率雙重衝擊的敏感度上升</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>

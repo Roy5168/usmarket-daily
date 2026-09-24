@@ -294,6 +294,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .yc-legend i.yc-l-prev{border-top:2px dashed var(--ink-3)}
 .yc-legend i.yc-l-mo{border-top:2px dotted var(--mark)}
 
+/* 未來關鍵事件：以「•」條列（其他章節維持無符號） */
+.plain.bullets li{position:relative;padding-left:26px}
+.plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -421,6 +425,10 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pyc .yc-legend{font-size:calc(7pt * var(--pk) * var(--fx, 1));color:#555;
   gap:10pt;padding:1pt 0 0}
 
+/* 未來關鍵事件（紙本）：同樣以「•」條列 */
+.print-sheet .pl.bullets li{padding-left:7pt;text-indent:-7pt}
+.print-sheet .pl.bullets li::before{content:"• ";color:#666}
+
 </style>
 <style>
 /* 網頁：工具列「歷史查詢」左側的 logo＋附註 */
@@ -537,7 +545,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">四</div><h2>未來關鍵事件</h2><div class="tag">CALENDAR · ET</div></div>
-<ul class="plain">
+<ul class="plain bullets">
 <li><span class="it">08/26（三）盤後16:20 ET：輝達（NVDA）公布2026會計年度Q2財報，營收962億美元優於預期922億美元，年增106%；惟下季營收展望910億美元±2%，低於市場預期1,039億美元，財報後盤後股價一度下跌</span></li>
 <li><span class="it">08/26（三）：Meta與52州檢察總長就社群媒體危害未成年人訴訟達成和解，10年內最高支付180億美元，尚待法院核准</span></li>
 <li><span class="it">08/27（四）08:30 ET：當週初領失業救濟金人數公布（前一週06為20.6萬人，預期21.0萬人）</span></li>
@@ -613,7 +621,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 </svg>
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 08/26/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s利差</td><td class="tx">47bp（前日47bp，持平；一週前46bp，+1bp；一個月前35bp，+12bp）<div class="pn">過去一個月曲線明顯趨陡，但最近一日持平，短端與長端同步上移</div></td></tr><tr><td class="k">30Y–10Y利差</td><td class="tx">52bp（前日53bp，-1bp；一週前54bp，-2bp；一個月前48bp，+4bp）<div class="pn">超長端近一週略見趨平，與Treasury擴大買回長債操作的傳聞方向一致</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">82.23美元/桶，-0.13（-0.16%）；交易所結算價，前一交易日 08/25 為 82.36</td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">87.84美元/桶，-0.74（-0.84%）；交易所結算價，前一交易日 08/25 為 88.58</td></tr><tr><td class="k">黃金（COMEX 12月期貨）</td><td class="tx">4,653.30美元/盎司，-41.20（-0.88%）；交易所結算價，前一交易日 08/25 為 4,694.50</td></tr><tr><td class="k">美元指數DXY</td><td class="tx">99.148，+0.263（+0.27%）；美東 16:00 匯率計算，前一交易日 08/25 為 98.884</td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td colspan="2" class="tx">7月核心PCE年增3.3%／市場預期3.3%／前值(6月)3.3%<div class="pn">連兩月持平於3.3%，與預期完全一致，未提供聯準會降息理由</div></td></tr><tr><td colspan="2" class="tx">7月PCE平減指數年增3.7%／市場預期3.6%／前值(6月)3.7%<div class="pn">總指數優於預期0.1個百分點，但年增率與前值持平，通膨仍顯著高於2%目標</div></td></tr><tr><td colspan="2" class="tx">Q2 GDP第二次估計年化+1.5%／市場預期+1.5%／前值(初值)+1.5%<div class="pn">與初值及預期一致，較Q1的+2.1%明顯放緩，消費支出上修抵銷進口增加的拖累</div></td></tr><tr><td colspan="2" class="tx">7月耐久財訂單月增1.1%／市場預期+0.5%／前值(6月)+0.3%<div class="pn">總值優於預期，但排除運輸後僅+0.4%（預期+0.6%），顯示成長集中於波動較大的運輸類訂單</div></td></tr></tbody></table></section>
-<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><table class="pt kv"><tbody><tr><td class="k">08/26（三）盤後16:20 ET</td><td class="tx">輝達（NVDA）公布2026會計年度Q2財報，營收962億美元優於預期922億美元，年增106%；惟下季營收展望910億美元±2%，低於市場預期1,039億美元，財報後盤後股價一度下跌</td></tr><tr><td class="k">08/26（三）</td><td class="tx">Meta與52州檢察總長就社群媒體危害未成年人訴訟達成和解，10年內最高支付180億美元，尚待法院核准</td></tr><tr><td class="k">08/27（四）08:30 ET</td><td class="tx">當週初領失業救濟金人數公布（前一週06為20.6萬人，預期21.0萬人）</td></tr><tr><td class="k">08/28（五）10:00 ET</td><td class="tx">Fed主席華許（Kevin Warsh）於Jackson Hole經濟政策研討會發表就任後首場年會演說</td></tr><tr><td class="k">09/01（二）</td><td class="tx">ISM製造業PMI、JOLTS職缺數據</td></tr><tr><td class="k">09/03（四）</td><td class="tx">ISM服務業PMI</td></tr><tr><td class="k">09/04（五）</td><td class="tx">8月非農就業報告</td></tr><tr><td class="k">09/16（三）14:00 ET</td><td class="tx">FOMC利率決議；14:30 ET主席華許記者會</td></tr></tbody></table></section>
+<section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>08/26（三）盤後16:20 ET：輝達（NVDA）公布2026會計年度Q2財報，營收962億美元優於預期922億美元，年增106%；惟下季營收展望910億美元±2%，低於市場預期1,039億美元，財報後盤後股價一度下跌</li><li>08/26（三）：Meta與52州檢察總長就社群媒體危害未成年人訴訟達成和解，10年內最高支付180億美元，尚待法院核准</li><li>08/27（四）08:30 ET：當週初領失業救濟金人數公布（前一週06為20.6萬人，預期21.0萬人）</li><li>08/28（五）10:00 ET：Fed主席華許（Kevin Warsh）於Jackson Hole經濟政策研討會發表就任後首場年會演說</li><li>09/01（二）：ISM製造業PMI、JOLTS職缺數據</li><li>09/03（四）：ISM服務業PMI</li><li>09/04（五）：8月非農就業報告</li><li>09/16（三）14:00 ET：FOMC利率決議；14:30 ET主席華許記者會</li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><ul class="pl"><li>9月16日FOMC會議：市場定價「維持不變」機率約60%、「升息1碼」機率約40%，未見降息機率（截至美東時間8月26日，PCE數據公布後）<div class="pn">一週前(08/19)升息機率約33%，本次較一週前上升約7個百分點，反映市場對9月升息路徑的定價升溫，7月核心PCE符合預期未能扭轉此一趨勢</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10年期公債殖利率</td><td class="mk">站上4.75%（近期高點）</td><td>市場對9月升息路徑重新定價升溫</td></tr><tr><td>WTI原油</td><td class="mk">跌破78美元/桶</td><td>賀莫茲海峽風險溢價進一步消退、通膨疑慮降溫</td></tr><tr><td>CME FedWatch 9月升息機率</td><td class="mk">站上50%</td><td>市場基準情境由「按兵不動」轉向「傾向升息」</td></tr><tr><td>Jackson Hole華許演說內容</td><td class="mk">明確排除9月降息可能</td><td>短端利率與美元指數可能同步走升</td></tr><tr><td>黃金現貨</td><td class="mk">站上4,650美元/盎司（近三個月高點）</td><td>反映美元走弱與財政赤字疑慮下的避險需求</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-09-14 23:48</span></footer>
