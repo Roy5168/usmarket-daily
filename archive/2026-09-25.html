@@ -23,6 +23,8 @@
      英數一律 Times New Roman；中文標題與內文一律蘋方（Windows 備援微軟正黑體）。*/
   --serif:"Times New Roman",Times,"PingFang TC","Microsoft JhengHei","微軟正黑體","Heiti TC",sans-serif;
   --sans:"Times New Roman",Times,"PingFang TC","Microsoft JhengHei","微軟正黑體","Heiti TC",sans-serif;
+  /* 標題字體：比照台灣金融市場日報（taiwan-market-daily）的 h1，宋體系；Mac 未裝思源宋體時顯示系統內建的宋體-繁。2026-10-01 使用者要求 */
+  --title-serif:"Times New Roman",Times,"Noto Serif TC","Songti TC",serif;
   --mono:"Times New Roman",Times,"PingFang TC","Microsoft JhengHei","微軟正黑體","Heiti TC",sans-serif;
 }
 @media (prefers-color-scheme:dark){
@@ -87,7 +89,7 @@ body{
   color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 }
 h1{
-  font-family:var(--serif);font-weight:700;font-size:clamp(30px,5.4vw,48px);
+  font-family:var(--title-serif);font-weight:700;font-size:clamp(30px,5.4vw,48px);
   line-height:1.12;letter-spacing:.01em;margin:12px 0 6px;
 }
 h1 .thin{font-weight:400;color:var(--ink-2)}
@@ -336,8 +338,8 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 /* 報頭 */
 .print-sheet .ph{display:flex;justify-content:space-between;align-items:flex-end;gap:10pt;
   border-bottom:1.4pt solid #111;padding-bottom:2.5pt;margin-bottom:3pt}
-.print-sheet .ph .t{font-size:calc(16pt * var(--pk) * var(--fx, 1));font-weight:700;letter-spacing:.04em;line-height:1.1}
-.print-sheet .ph .t span{font-size:calc(7.4pt * var(--pk) * var(--fx, 1));font-weight:400;color:#666;letter-spacing:.14em;
+.print-sheet .ph .t{font-family:var(--title-serif);font-size:calc(16pt * var(--pk) * var(--fx, 1));font-weight:700;letter-spacing:.04em;line-height:1.1}
+.print-sheet .ph .t span{font-family:var(--serif);font-size:calc(7.4pt * var(--pk) * var(--fx, 1));font-weight:400;color:#666;letter-spacing:.14em;
   margin-left:7pt;text-transform:uppercase}
 .print-sheet .ph .d{font-size:calc(7.8pt * var(--pk) * var(--fx, 1));color:#333;text-align:right;line-height:1.35}
 
