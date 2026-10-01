@@ -121,10 +121,11 @@ h1 .thin{font-weight:400;color:var(--ink-2)}
 section{margin:0 0 42px;scroll-margin-top:16px}
 .shead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--ink);padding-bottom:7px;margin-bottom:4px}
 .snum{
-  font-family:var(--serif);font-size:34px;font-weight:400;line-height:1;
+  font-family:var(--title-serif);font-size:34px;font-weight:400;line-height:1;
   color:var(--ink-3);min-width:38px;
 }
-.shead h2{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.02em;margin:0;flex:1}
+/* 章節標題比照台灣金融市場日報：宋體系、與序號同級（桌機 34px／手機 27px），兩處數值須與 .snum 同步調整 */
+.shead h2{font-family:var(--title-serif);font-size:34px;font-weight:700;letter-spacing:.02em;margin:0;flex:1;line-height:1.15}
 .shead .tag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase}
 
 /* ── 表格 ─────────────────────────── */
@@ -234,7 +235,8 @@ tr.sub td .note{margin:0;padding-bottom:0}
   .watch td:last-child{font-size:13.5px}
   .sheet{padding:0 16px 56px}
   .snum{font-size:27px;min-width:30px}
-  .shead h2{font-size:18px}
+  .shead h2{font-size:27px}
+  .shead .tag{display:none}   /* 手機上標題放大後右側英文標籤會擠壓標題，比照台灣日報隱藏 */
   .events li{grid-template-columns:1fr;gap:5px}
   td,th{padding-left:8px;padding-right:8px}
 }
@@ -345,7 +347,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 /* 章節標題 */
 .print-sheet .psec{margin:0}
-.print-sheet .ps{font-size:calc(10.5pt * var(--pk) * var(--fx, 1));font-weight:700;margin:5pt 0 1.5pt;padding-bottom:1pt;
+.print-sheet .ps{font-family:var(--title-serif);font-size:calc(10.5pt * var(--pk) * var(--fx, 1));font-weight:700;margin:5pt 0 1.5pt;padding-bottom:1pt;
   border-bottom:.6pt solid #444;break-after:avoid;page-break-after:avoid}
 .print-sheet .ps .n{color:#777;font-weight:700}
 
