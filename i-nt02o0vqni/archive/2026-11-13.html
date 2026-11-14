@@ -302,6 +302,16 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .plain.bullets li{position:relative;padding-left:26px}
 .plain.bullets li::before{content:"•";position:absolute;left:12px;top:11px;color:var(--ink-3);line-height:1.62}
 
+/* 機率條：升息／降息 50bp 以上用較深的紅／綠，與 25bp 區分（2026-11-14） */
+.bar .b4,.legend i.b4{background:#5c1712}
+.bar .b5,.legend i.b5{background:#163d2e}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .bar .b4,:root:not([data-theme="light"]) .legend i.b4{background:#9e2b24}
+  :root:not([data-theme="light"]) .bar .b5,:root:not([data-theme="light"]) .legend i.b5{background:#2d7a5a}
+}
+:root[data-theme="dark"] .bar .b4,:root[data-theme="dark"] .legend i.b4{background:#9e2b24}
+:root[data-theme="dark"] .bar .b5,:root[data-theme="dark"] .legend i.b5{background:#2d7a5a}
+
 </style>
 <style>
 /* ══════════════════════════════════════════════════════
@@ -396,6 +406,8 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 .print-sheet .pbar .b2{background:#8a857b}
 .print-sheet .pbar .b3{background:#2c6b52}
 .print-sheet .pbar .b0{background:#e5e1d8}
+.print-sheet .pbar .b4{background:#5c1712}
+.print-sheet .pbar .b5{background:#163d2e}
 
 /* 頁尾 */
 .print-sheet .pfoot{display:flex;justify-content:space-between;gap:10pt;margin-top:4pt;padding-top:2pt;
@@ -573,7 +585,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 
 <section>
   <div class="shead"><div class="snum">五</div><h2>Fed 政策路徑訊號</h2><div class="tag">CME FEDWATCH</div></div>
-<div class="probs"><div class="probcap">CME FedWatch 官方機率　·　2026-12-09 FOMC　·　資料時間 12 Nov 2026 04:32:17 CT</div><div class="bar"><span class="b1" style="flex:86.3" title="升息25bp 86.3%">86.3%</span><span class="b1" style="flex:13.7" title="升息50bp 13.7%">13.7%</span></div><div class="legend"><span><i class="b1"></i>升息25bp 86.3%</span><span><i class="b1"></i>升息50bp 13.7%</span></div></div>
+<div class="probs"><div class="probcap">CME FedWatch 官方機率　·　2026-12-09 FOMC　·　資料時間 12 Nov 2026 04:32:17 CT</div><div class="bar"><span class="b1" style="flex:86.3" title="升息25bp 86.3%">86.3%</span><span class="b4" style="flex:13.7" title="升息50bp 13.7%">13.7%</span></div><div class="legend"><span><i class="b1"></i>升息25bp 86.3%</span><span><i class="b4"></i>升息50bp 13.7%</span></div></div>
 <ul class="plain">
 <li><span class="it">（CME FedWatch；資料時間 12 Nov 2026 04:32:17 CT；12/9 FOMC；現行區間 375-400bp）</span></li>
 <li><span class="it">維持（375-400bp）：未列出（隱含 0%）</span></li>
@@ -636,7 +648,7 @@ td.freetext{text-align:left;white-space:normal;font-family:var(--sans);
 <div class="yc-legend"><span><i class="yc-l-now"></i>當日 11/12/2026</span><span><i class="yc-l-prev"></i>前一交易日</span><span><i class="yc-l-mo"></i>一個月前</span></div></div><table class="pt kv"><tbody><tr><td class="k">2s10s 利差</td><td class="tx">+24bp（前一交易日 +25bp，-1bp）</td></tr><tr><td class="k">30Y–10Y 利差</td><td class="tx">+33bp（前一交易日 +37bp，-4bp）<div class="pn">短中天期升幅大於長天期，曲線呈熊平；5 年期升幅最大，反映升息預期重新定價。</div></td></tr><tr><td class="k">WTI原油（NYMEX近月期貨）</td><td class="tx">88.79美元/桶，+2.39（+2.77%）；美東 14:30 結算時點，前一交易日 11/11 為 86.40<div class="pn">葉門胡塞武裝宣稱攻擊沙烏地能源設施；伊朗軍方稱荷莫茲海峽有四艘油輪遭爆炸（未獲獨立證實）；川普表示無須與伊朗達成協議。</div></td></tr><tr><td class="k">Brent原油（ICE近月期貨）</td><td class="tx">95.88美元/桶，+3.26（+3.52%）；倫敦 19:30 結算時點，前一交易日 11/11 為 92.62<div class="pn">驅動因素同上，供應中斷疑慮回升。</div></td></tr><tr><td class="k">黃金（COMEX近月期貨）</td><td class="tx">3,886.30美元/盎司，-113.60（-2.84%）；美東 13:30 結算時點，前一交易日 11/11 為 3,999.90<div class="pn">媒體報導為連續第三日回落，主因美元與殖利率走升、12 月升息兩碼的揣測升溫。</div></td></tr><tr><td class="k">美元指數DXY</td><td class="tx">103.167，+0.238（+0.23%）；美東 16:00（美股收盤時點），前一交易日 11/11 為 102.929<div class="pn">美債殖利率走升支撐美元。</div></td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">三、</span>重要經濟數據</h3><table class="pt kv"><tbody><tr><td class="k">初領失業救濟金（截至 11/7 當週）</td><td class="tx">20.0 萬人／預期約 19.5 萬人／前值 19.1 萬人（修正後）<div class="pn">高於預期，為一個月高點，但自 9 月中以來每週均未超過 20 萬人，勞動市場仍緊。</div></td></tr><tr><td class="k">四週移動平均</td><td class="tx">195,250 人，與前週修正值持平</td></tr><tr><td class="k">續領失業救濟金（截至 10/31 當週）</td><td class="tx">169.7 萬人，減少 2 萬人</td></tr><tr><td class="k">10 月成屋銷售（NAR）</td><td class="tx">年化 375 萬戶／預期 385 萬戶／前值 397 萬戶（由 399 萬下修）<div class="pn">月增率 -5.5%、年增率 -8.8%，為 2010 年以來最低；10 月 30 年期房貸利率平均 7.33%（9 月 6.86%）。</div></td></tr><tr><td colspan="2" class="tx">成屋庫存 159 萬戶（月增 1.3%，去化 5.1 個月）；中位數售價 416,700 美元（年增 0.4%）<div class="pn">高利率壓抑成交量，價格仍具僵固性。</div></td></tr></tbody></table></section>
 <section class="psec"><h3 class="ps"><span class="n">四、</span>未來關鍵事件</h3><ul class="pl bullets"><li>11/13（五）08:30：10 月 PPI（預期月增率 0.4%、年增率 6.6%；核心月增率 0.3%；9 月月增率 1.3%）</li><li>11/17（二）08:30：10 月零售銷售（單一來源預期月增率 0.5%，前值 0.8%）</li><li>11/17（二）盤後：Nvidia 2027 會計年度 Q3 財報（多家財報日曆一致，待公司 IR 確認）</li><li>11/18（三）14:00：10 月 FOMC 會議紀錄</li><li>11/19（四）08:30：初領失業救濟金</li><li>11/19（四）盤前：Walmart 財報</li><li>12/8–12/9：FOMC 會議；12/9 14:00 政策聲明、14:30 Warsh 記者會</li></ul></section>
-<section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><div class="pfed"><div class="pbar"><span class="b1" style="flex:86.3"></span><span class="b1" style="flex:13.7"></span></div><div><b>升息25bp 86.3%、升息50bp 13.7%</b>　<span class="m">CME FedWatch｜2026-12-09 FOMC｜資料時間 12 Nov 2026 04:32:17 CT</span></div></div><ul class="pl"><li>（CME FedWatch；資料時間 12 Nov 2026 04:32:17 CT；12/9 FOMC；現行區間 375-400bp）</li><li>維持（375-400bp）：未列出（隱含 0%）</li><li>升息 25bp（400-425bp）：86.3%</li><li>升息 50bp（425-450bp）：13.7%</li><li>降息：未列出（隱含 0%）<div class="pn">讀數時點早於 11/12 的失業金、成屋數據與 30 年期標售，未反映當日殖利率上行。</div><div class="pn">11/10 公布的 10 月 CPI 月增率 0.4%（預期 0.3%）後，市場已全數定價 12 月升息，分歧轉為升一碼或兩碼。</div><div class="pn">10 月會議以 10 比 2 維持利率不變，兩位異議者（Cook、Hammack）主張升息一碼。</div></li></ul></section>
+<section class="psec"><h3 class="ps"><span class="n">五、</span>Fed 政策路徑訊號</h3><div class="pfed"><div class="pbar"><span class="b1" style="flex:86.3"></span><span class="b4" style="flex:13.7"></span></div><div><b>升息25bp 86.3%、升息50bp 13.7%</b>　<span class="m">CME FedWatch｜2026-12-09 FOMC｜資料時間 12 Nov 2026 04:32:17 CT</span></div></div><ul class="pl"><li>（CME FedWatch；資料時間 12 Nov 2026 04:32:17 CT；12/9 FOMC；現行區間 375-400bp）</li><li>維持（375-400bp）：未列出（隱含 0%）</li><li>升息 25bp（400-425bp）：86.3%</li><li>升息 50bp（425-450bp）：13.7%</li><li>降息：未列出（隱含 0%）<div class="pn">讀數時點早於 11/12 的失業金、成屋數據與 30 年期標售，未反映當日殖利率上行。</div><div class="pn">11/10 公布的 10 月 CPI 月增率 0.4%（預期 0.3%）後，市場已全數定價 12 月升息，分歧轉為升一碼或兩碼。</div><div class="pn">10 月會議以 10 比 2 維持利率不變，兩位異議者（Cook、Hammack）主張升息一碼。</div></li></ul></section>
 <section class="psec"><h3 class="ps"><span class="n">六、</span>後續觀察重點</h3><table class="pt pw"><thead><tr><th>觀察指標</th><th>門檻</th><th>意義</th></tr></thead><tbody><tr><td>10Y 殖利率</td><td class="mk">站穩 5.21%（一個月前水準）之上</td><td>長端重新測試 9 月底高點區間</td></tr><tr><td>FedWatch 升息 50bp 機率</td><td class="mk">超過 25%</td><td>升息幅度預期由一碼向兩碼移動</td></tr><tr><td>10 月 PPI 月增率</td><td class="mk">高於 0.4%</td><td>上游價格壓力延續，與 CPI 超預期相互印證</td></tr><tr><td>Brent 原油</td><td class="mk">回升至 100 美元以上</td><td>能源對通膨預期的推升再度加劇</td></tr><tr><td>2s10s 利差</td><td class="mk">收窄至 20bp 以下</td><td>熊平延續，短端升息定價持續主導</td></tr></tbody></table></section>
 <footer class="pfoot"><span>本報告為公開市場數據之彙整與觀察，不構成投資建議。紅＝上漲／殖利率上行，綠＝下跌；bp＝基點；時間除另註明外為美東時間。</span><span>產生於 2026-11-13 06:47</span></footer>
 </div>
